@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <color name="opaco50">#50000000</color>
+    <color name="opaco30">#30000000</color>
+    <color name="primaryColor">#182131</color>
+    <color name="primaryDarkColor">#191919</color>
+    <color name="colorAccent">#3ca4dc</color>
+    <color name="primaryLightColor">#25334b</color>
+    <color name="secondaryColor">#3b2e71</color>
+    <color name="terciaryColor">#444167</color>
+    <color name="secondaryLightColor">#6957a0</color>
+    <color name="secondaryDarkColor">#322b55</color>
+    <color name="primaryTextColor">#8cdaff</color>
+    <color name="secondaryTextColor">#788dc7</color>
+    <color name="terciaryTextColor">#ff5b61</color>
+    <color name="inactiveTextColor">#6d6d6d</color>
+    <color name="inactive">#2e2e2e</color>
+
+    <color name="colorTextLight">#ffffff</color>
+    <color name="colorTextDark">#424242</color>
+
+    <color name="colorLycra1">#ec407a</color>
+    <color name="colorLycra2">#2196f3</color>
+    <color name="colorLycra3">#ffeb3b</color>
+    <color name="colorLycra4">#009688</color>
+    <color name="colorLycra5">#ff5722</color>
+    <color name="colorLycra6">#673ab7</color>
+    <color name="colorLycra7">#424242</color>
+    <color name="colorLycra8">#fafafa</color>
+
+</resources>

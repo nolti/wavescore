@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_inscriptos"
+            android:icon="@drawable/ic_inscriptos"
+            android:title="Inscriptos" />
+
+        <item
+            android:id="@+id/nav_fixtures"
+            android:icon="@drawable/ic_fixture"
+            android:title="Fixtures" />
+        <item
+            android:id="@+id/nav_puntuaciones"
+            android:icon="@drawable/ic_puntuaciones"
+            android:title="Puntuaciones" />
+        <item
+            android:id="@+id/nav_resultados"
+            android:icon="@drawable/ic_resultados"
+            android:title="Resultados" />
+        <item
+            android:id="@+id/nav_rankings"
+            android:icon="@drawable/ic_ranking"
+            android:title="Rankings" />
+    </group>
+
+</menu>
+
+

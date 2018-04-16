@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:app="http://schemas.android.com/apk/res-auto"
+	xmlns:tools="http://schemas.android.com/tools"
+	android:layout_width="match_parent"
+	android:layout_height="72dp"
+	android:background="@color/primaryDarkColor"
+	android:orientation="horizontal"
+	android:padding="0dp">
+
+	<de.hdodenhof.circleimageview.CircleImageView xmlns:app="http://schemas.android.com/apk/res-auto"
+		android:id="@+id/profile_image"
+		android:layout_width="40dp"
+		android:layout_height="40dp"
+		android:layout_marginBottom="16dp"
+		android:layout_marginStart="16dp"
+		android:layout_marginTop="16dp"
+		android:backgroundTintMode="screen"
+		android:src="@drawable/iv_rider"
+		app:civ_circle_background_color="@color/inactive" />
+
+	<TextView
+		android:id="@+id/position"
+		android:layout_width="wrap_content"
+		android:layout_height="match_parent"
+		android:layout_weight="2"
+		android:background="@color/secondaryTextColor"
+		android:gravity="center_vertical|center_horizontal"
+		android:padding="16dp"
+		android:textColor="@color/primaryColor"
+		android:visibility="invisible"
+		tools:text="0" />
+
+	<TextView
+		android:id="@+id/nombre"
+		android:layout_width="wrap_content"
+		android:layout_height="match_parent"
+		android:layout_gravity="center_horizontal"
+		android:layout_weight="5"
+		android:ellipsize="end"
+		android:gravity="center_vertical|start"
+		android:maxLines="1"
+		android:padding="16dp"
+		android:paddingEnd="0dp"
+		android:paddingStart="16dp"
+		android:textColor="@color/primaryTextColor"
+		android:textSize="14sp"
+		android:textStyle="normal"
+		tools:text=" rider" />
+
+	<TextView
+		android:id="@+id/categoria"
+		android:layout_width="wrap_content"
+		android:layout_height="match_parent"
+		android:layout_gravity="end"
+		android:layout_weight="1"
+		android:ellipsize="end"
+		android:gravity="center_vertical|center_horizontal|end"
+		android:maxLines="1"
+		android:padding="16dp"
+		android:textColor="@color/terciaryTextColor"
+		android:textSize="10sp"
+		tools:text="categoria" />
+
+	<!-- android:textColorLink="@color/colorAccent" -->
+</LinearLayout>

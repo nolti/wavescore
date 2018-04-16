@@ -1,0 +1,51 @@
+<resources>
+    <string name="app_name">WaveScore</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="action_settings">Settings</string>
+    <string name="ok">ok</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="container_fragment">Fragmento contenedor</string>
+    <string name="hello_red_fragment">Hello red fragment</string>
+    <string name="hello_green_fragment">Hello green fragment</string>
+    <string name="title_activity_inscriptos">InscriptosActivity</string>
+    <string name="section_format">Hello World from section: %1$d</string>
+
+    <!-- Font -->
+    <string name="roboto_regular">sans-serif</string>
+    <string name="roboto_light">sans-serif-light</string>
+    <string name="roboto_condensed">sans-serif-condensed</string>
+    <string name="roboto_thin">sans-serif-thin</string>
+    <string name="roboto_medium">sans-serif-medium</string>
+
+    <string name="number_picker_formatter">%02d</string>
+    <string name="number_picker_0">0</string>
+
+    <string name="agree">De acuerdo</string>
+    <string name="disagree">Cancelar</string>
+    <string name="mas_info">Más infor</string>
+    <string name="maximum_waves">Punteaste la última Ola de este competidor.</string>
+    <string name="no_more_waves">Ya no se permite puntearle más Olas al competidor.</string>
+
+    <string name="best_wave1">Mejor Ola 1</string>
+    <string name="best_wave2">Mejor Ola 2</string>
+    <string name="first_best_wave">1ra mejor ola</string>
+    <string name="second_best_wave">2da mejor ola</string>
+    <string name="total">Total</string>
+    <string name="score">Puntaje</string>
+
+    <!-- Status Heat -->
+    <string name="status0">Aún no fue puntuado</string>
+    <string name="status1">Ganando</string>
+    <string name="status8">Empatando</string>
+
+    <string name="status2">Necesitando para ganar una ola de</string>
+    <string name="status3">Necesitando para ganar otra ola de</string>
+    <string name="status4">Necesitando para ganar una combinación de</string>
+
+    <string name="status5">Necesitando para clasificar una ola de</string>
+    <string name="status6">Necesitando para clasificar otra ola de</string>
+    <string name="status7">Necesitando para clasificar una combinación de</string>
+
+</resources>

@@ -1,0 +1,25 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/maincontainer"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/primaryDarkColor"
+    tools:context="com.voltiosx.nolti.wavescore.ui.fragments.InscriptosFragment">
+
+    <!--tools:context="com.voltiosx.nolti.wavescore.ui.fragments.ContainerFragment"-->
+    <!--<TextView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:text="@string/container_fragment"
+        android:gravity="center"
+        android:textSize="24dp"
+        android:textColor="@android:color/white"/>-->
+
+    <ListView
+        android:id="@+id/inscriptos_chekin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:divider="@color/inactive"
+        android:dividerHeight="1dp" />
+
+</FrameLayout>
