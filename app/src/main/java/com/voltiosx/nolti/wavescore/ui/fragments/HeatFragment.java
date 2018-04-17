@@ -589,10 +589,10 @@ public class HeatFragment extends Fragment {
                 String l = ridersheat.get(recycler.getChildAdapterPosition(v)).getHometown();
                 String s=" - ";
                 Log.d("1er INDEX RIDER",n+s+String.valueOf(INDEXrider));
-                String mensaje="RIDER: ";
+                /*String mensaje="RIDER: ";
                 mensaje += "iD: "+IDrider+s+INDEXrider+s;
                 mensaje += "Nombre: "+n+s;
-                mensaje += "Localidad: "+l;
+                mensaje += "Localidad: "+l;*/
 
                 // new MaterialDialog.Builder(contexto).content(mensaje).positiveText(R.string.agree).show();
                 // Metodo scorepicker y le paso el id del rider a puntear;
