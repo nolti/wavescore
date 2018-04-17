@@ -252,12 +252,12 @@ public class HeatFragment extends Fragment {
                     heatChangePosition(); // OK
                     heatSetPositions(); // OK
                     scoreNeededToWin(); // CORRIGIENDO
-                    Log.d("VALOR i antes de break", String.valueOf(i));
+                    // Log.d("VALOR i antes de break", String.valueOf(i));
                     Log.d("PUNTEO NUM DE OLA", String.valueOf(i+1));
                     break;
                 }
-                i++;
-                Log.d("VALOR i luego de break", String.valueOf(i));
+                i++; //se incrementa si: initScore!=0.0
+                // Log.d("VALOR i luego de break", String.valueOf(i));
             }
         } // end if
     }
@@ -431,7 +431,7 @@ public class HeatFragment extends Fragment {
                         if (postie>1) {
                             Log.d("EJECUTADO", "changePosTieBreaker()");
                             changePosTieBreaker(winerTie, loserTie, postie);
-                            Log.d("NUM OLA DESEMPATE", "#"+(postie+1));
+                            Log.d("NUM OLA DESEMPATE", "postie #"+(postie+1));
                         }
                     }
                     if (needwinScore>10.0){
