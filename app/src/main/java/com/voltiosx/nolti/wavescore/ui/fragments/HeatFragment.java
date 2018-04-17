@@ -310,8 +310,8 @@ public class HeatFragment extends Fragment {
         // Update position data values
         for (int i=0; i<ridersheat.size(); i++){
             Rider rNow = ridersheat.get(i);
-            int oldposition = rNow.getPosition();
-            String namerider = rNow.getNombre();
+            //int oldposition = rNow.getPosition();
+            //String namerider = rNow.getNombre();
             // Log.d("Posicion anterior rider", namerider+": "+String.valueOf(oldposition));
             rNow.setPosition(i);
             // Log.d("Posicion nueva rider", namerider+": "+String.valueOf(i));
@@ -518,9 +518,10 @@ public class HeatFragment extends Fragment {
         // obtener las posiciones de los riders previo al desempate
         int posWiner = winerTie.getPosition();
         int posLoser = loserTie.getPosition();
-        int posAuxiliary = -1;
+        // int fromPosition = 3; //fromPosition
+        //int posAuxiliary = -1;
         Log.d("NAMES PRE-DESEMPATE","nameWiner = "+winerTie.getNombre()+" - "+"nameLoser = "+loserTie.getNombre());
-        Log.d("POSICION PRE-DESEMPATE","posWiner = "+posWiner+" - "+"posLoser = "+posLoser+" - "+"posAuxiliary = "+posAuxiliary);
+        //Log.d("POSICION PRE-DESEMPATE","posWiner = "+posWiner+" - "+"posLoser = "+posLoser+" - "+"posAuxiliary = "+posAuxiliary);
         Log.d("IDs PRE-DESEMPATE","idWiner = "+winerTie.getId()+" - "+"idLoser = "+loserTie.getId());
         // comparar los puntajes
         int retval = Double.compare(waveWiner,waveLoser);
@@ -529,14 +530,25 @@ public class HeatFragment extends Fragment {
         } else if(retval < 0) {
             Log.d("REPOSICIONAR?","SI --> waveWiner es menor < que waveLoser");
             // Guardo la posicion del Loser
-            posAuxiliary = posLoser;
-            Log.d("POSICION auxiliar","guarda a posLoser= "+posAuxiliary);
+            //posAuxiliary = posLoser;
+            //Log.d("POSICION auxiliar","guarda a posLoser= "+posAuxiliary);
             // Loser pasa a ser ganador entonces le seteo la posicion del Winer
-            loserTie.setPosition(posWiner);
+            //loserTie.setPosition(posWiner);
             // Winer pasa a ser perdedor entonces le seteo la posicion del Perdedor guardada (posAuxiliary)
-            winerTie.setPosition(posAuxiliary);
+            //winerTie.setPosition(posAuxiliary);
+
+            // update ArrayList ridersheat
+            Rider riderAuxiliary = ridersheat.get(posLoser); //fromPosition
+            ridersheat.remove(posLoser); //fromPosition
+            ridersheat.add(posWiner, riderAuxiliary); //toPosition
+            // notify adapter
+            heatAdapter.notifyItemMoved(posLoser, posWiner);
+            heatSetPositions();
+
             // Refresco el adaptador
-            heatAdapter.notifyDataSetChanged();
+            // heatChangePosition();
+            // heatAdapter.notifyDataSetChanged();
+
             Log.d("DESEMPATADO","OK !!! \"se cambiaron las posiciones\"");
             Log.d("NAMES DESEMPATADOS","nameWiner = "+winerTie.getNombre()+" - "+"nameLoser = "+loserTie.getNombre());
             Log.d("POSICION DESEMPATADOS","posWiner = "+winerTie.getPosition()+" - "+"posLoser = "+loserTie.getPosition());
