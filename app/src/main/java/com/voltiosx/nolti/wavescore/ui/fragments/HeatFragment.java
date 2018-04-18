@@ -68,7 +68,7 @@ public class HeatFragment extends Fragment {
     public void scorepicker(){
         ScorePickerFragment scorePickerFragment = new ScorePickerFragment();
         getFragmentManager().beginTransaction().replace(R.id.maincontainer, scorePickerFragment).addToBackStack(null).commit();
-        Log.d("SCOREPICKER ", "open");
+        //Log.d("SCOREPICKER ", "open");
     }
 
     // metodo redondeo Double
@@ -422,16 +422,18 @@ public class HeatFragment extends Fragment {
                     Log.d("needtieScore", String.valueOf(needtieScore));
                     if (needtieScore==0.0) {
                         Log.d("EMPATE dos olas", "needtieScore==0.0");
-                        Log.d("GANADOR empate", ridersheat.get(0).getNombre()+" OLAS "+ridersheat.get(0).getHeatscores());
-                        Log.d("LOSER empate", ridersheat.get(i).getNombre()+" OLAS "+ridersheat.get(i).getHeatscores());
+                        Log.d("GANADOR empate", ridersheat.get(0).getNombre()+" OLAS "+ridersheat.get(i-1).getSortwavestaken());
+                        Log.d("LOSER empate", ridersheat.get(i).getNombre()+" OLAS "+ridersheat.get(i).getSortwavestaken());
                         Rider winerTie = ridersheat.get(0);
                         Rider loserTie = ridersheat.get(i);
                         int postie = postieBreaker(winerTie.getSortwavestaken(), loserTie.getSortwavestaken());
                         // Desempate posible a partir de la 3era ola wave[1]>1 ( wave[2] == 3ra ola )
                         if (postie>1) {
-                            Log.d("EJECUTADO", "changePosTieBreaker()");
-                            changePosTieBreaker(winerTie, loserTie, postie);
                             Log.d("NUM OLA DESEMPATE", "postie #"+(postie+1));
+                            Log.d("EJECUTAR", "changePosTieBreaker()");
+                            changePosTieBreaker(winerTie, loserTie, postie);
+                        } else {
+                            Log.d("NO HAY DESEMPATE", "postie #"+(postie));
                         }
                     }
                     if (needwinScore>10.0){
@@ -480,31 +482,38 @@ public class HeatFragment extends Fragment {
         for (int i=0; (i<10) && tie; i++) {
             Double ola1 = waves1.get(i);
             Double ola2 = waves2.get(i);
-            int retval = Double.compare(ola1,ola2);
 
             Log.d("WAVE R1 empate","#"+i+" "+ola1);
             Log.d("WAVE R2 empate","#"+i+" "+ola2);
             Log.d("R1 waves","#"+i+" "+waves1);
             Log.d("R2 waves","#"+i+" "+waves2);
-            postie++;
 
-            if(retval > 0) {
-                Log.d("COMPARE >","WAVE R1 es mayor que WAVE R2");
-            } else if(retval < 0) {
-                Log.d("COMPARE <","WAVE R1 es menor que WAVE R2");
+            // si alguna de las dos olas son distinto que 0, entonces se pueden comparar y desempatar
+            if ((ola1!=0.0)||(ola2!=0.0)){
+                Log.d("ALGUNA O AMBAS OLAS","son distintas a 0.0");
+
+                int retval = Double.compare(ola1,ola2);
+                if(retval > 0) {
+                    Log.d("COMPARE >","WAVE R1 es mayor que WAVE R2");
+                } else if(retval < 0) {
+                    Log.d("COMPARE <","WAVE R1 es menor que WAVE R2");
+                } else {
+                    Log.d("COMPARE ==","WAVE R1 es igual que WAVE R2");
+                }
+                if (retval!=0){
+                    tie = false;
+                    Log.d("tie","= "+tie);
+                    Log.d("ola1 != ola2","SON DISTINTOS");
+                    postie=i;
+                } else {
+                    Log.d("tie","= "+tie);
+                    Log.d("ola1 == ola2","SON IGUALES");
+                }
             } else {
-                Log.d("COMPARE ==","WAVE R1 es igual que WAVE R2");
+                Log.d("AMBAS OLAS","postie #"+postie+" son iguales a 0.0");
             }
-
-            if (retval!=0){
-                tie = false;
-                Log.d("tie","= "+tie);
-                Log.d("ola1 != ola2","SON DISTINTOS");
-            } else {
-                Log.d("tie","= "+tie);
-                Log.d("ola1 == ola2","SON IGUALES");
-            }
-
+            //postie++; //ver si va dentro o fuera del bucle
+            Log.d("separador","-------------------------------------------------------------------------");
         }
         // devuelve la posicion donde ocurre el desempate, para que luego se comparen los scores y gane la ola de mayor puntaje y asi cambiar la posicion
         return postie;
@@ -544,6 +553,12 @@ public class HeatFragment extends Fragment {
             // notify adapter
             heatAdapter.notifyItemMoved(posLoser, posWiner);
             heatSetPositions();
+
+            // update de status tie
+            String tiestatus;
+            int numtiewave;
+            Double difscoretie;
+
 
             // Refresco el adaptador
             // heatChangePosition();
