@@ -305,7 +305,7 @@ public class ScorePickerFragment_bak extends Fragment {
                 new MaterialDialog.Builder(context).content(R.string.maximum_waves).positiveText(R.string.agree).show();
             }
         } else {
-            new MaterialDialog.Builder(context).content(R.string.no_more_waves).positiveText(R.string.agree).show();
+            new MaterialDialog.Builder(context).content(R.string.no_score_waves).positiveText(R.string.agree).show();
         }
     }
 }
