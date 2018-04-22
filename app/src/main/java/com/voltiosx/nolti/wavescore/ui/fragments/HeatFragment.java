@@ -254,7 +254,7 @@ public class HeatFragment extends Fragment {
                     averageScore(riderNow, scoredwaves); //OK
                     heatChangePosition(); // OK
                     heatSetPositions(); // OK
-                    scoreNeededToWin(); // CORRIGIENDO
+                    scoreNeededToWin(); // OK
                     // Log.d("VALOR i antes de break", String.valueOf(i));
                     Log.d("PUNTEO NUM DE OLA", String.valueOf(i+1)+" PARA "+riderNow.getNombre());
                     if(i==9){

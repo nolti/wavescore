@@ -27,7 +27,7 @@
             app:popupTheme="@style/AppTheme.PopupOverlay"
             app:title="@string/app_name"
             app:titleMargin="@dimen/activity_horizontal_margin"
-            app:titleTextColor="@android:color/white" /><!---->
+            app:titleTextColor="@android:color/white" />
 
     </android.support.design.widget.AppBarLayout>
 
