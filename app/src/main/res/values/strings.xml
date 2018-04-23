@@ -31,8 +31,8 @@
 
     <string name="best_wave1">Mejor Ola 1</string>
     <string name="best_wave2">Mejor Ola 2</string>
-    <string name="first_best_wave">1ra mejor ola</string>
-    <string name="second_best_wave">2da mejor ola</string>
+    <string name="first_best_wave">Ola 1</string>
+    <string name="second_best_wave">Ola 2</string>
     <string name="total">Total</string>
     <string name="score">Puntaje</string>
     <string name="lycra">lycra</string>
