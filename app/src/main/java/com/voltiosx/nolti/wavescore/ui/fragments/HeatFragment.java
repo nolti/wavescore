@@ -1,8 +1,8 @@
 package com.voltiosx.nolti.wavescore.ui.fragments;
-
 import android.content.Context;
 import android.nfc.Tag;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -25,14 +25,15 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.Iterator;
+import java.util.Objects;
 import java.util.Random;
 
 public class HeatFragment extends Fragment {
 
     private Context contexto;
-    public ArrayList<Rider> ridersheat = new ArrayList<>();
-    public ArrayList<Double> scoredwaves = new ArrayList<>();
-    public String statusridersheat;
+    private final ArrayList<Rider> ridersheat = new ArrayList<>();
+    private ArrayList<Double> scoredwaves = new ArrayList<>();
+    private String statusridersheat;
 
     // public ArrayList<ArrayList<Double>> matrixscores = new ArrayList<>();
     // public ArrayList<Double> heatscores = new ArrayList<>();
@@ -44,13 +45,13 @@ public class HeatFragment extends Fragment {
     // Declaro las Vistas Globales
     private View vista;
     private RecyclerView recycler;
-    public HeatAdapter heatAdapter;
+    private HeatAdapter heatAdapter;
 
     /* VARIABLES HEAT SCORING GLOBALES*/
-    public int IDrider;
-    public int INDEXrider;
-    public static int maxwaves = 10;
-    private Double scorerider, totalscore, tiebreakescore;
+    private int IDrider;
+    private int INDEXrider;
+    // --Commented out by Inspection (24/04/2018 11:20):public static int maxwaves = 10;
+    private Double scorerider, totalscore;
 
     // Required empty public constructor
     public HeatFragment() {
@@ -65,36 +66,40 @@ public class HeatFragment extends Fragment {
     }
 
     // NO LE PASO NADA solo necesito saber el valor de scorepicker al regresar
-    public void scorepicker(){
+    private void scorepicker(){
         ScorePickerFragment scorePickerFragment = new ScorePickerFragment();
-        getFragmentManager().beginTransaction().replace(R.id.maincontainer, scorePickerFragment).addToBackStack(null).commit();
+        Objects.requireNonNull(getFragmentManager()).beginTransaction().replace(R.id.maincontainer, scorePickerFragment).addToBackStack(null).commit();
         //Log.d("SCOREPICKER ", "open");
     }
 
-    // metodo redondeo Double
-    public static double round(double value, int places) {
-        if (places < 0) throw new IllegalArgumentException();
-        BigDecimal bd = new BigDecimal(value);
-        bd = bd.setScale(places, RoundingMode.HALF_UP);
-        return bd.doubleValue();
-    }
+// --Commented out by Inspection START (24/04/2018 11:34):
+//    // metodo redondeo Double
+//    private static double round(double value, int places) {
+//        if (places < 0) throw new IllegalArgumentException();
+//        BigDecimal bd = new BigDecimal(value);
+//        bd = bd.setScale(places, RoundingMode.HALF_UP);
+//        return bd.doubleValue();
+//    }
+// --Commented out by Inspection STOP (24/04/2018 11:34)
 
-    // Metodo inicializa los puntajes al azar
-    private ArrayList<Wave> initwavestake(){
-        ArrayList<Wave> waves = new ArrayList<>();
-        Random r = new Random();
-        Double random, min, max;
-        min=1.0;
-        max=10.0;
-        for (int i=0; i<10; i++){
-            random = min + (max - min) * r.nextDouble();
-            random = round(random,1);
-            Wave wave = new Wave(i, random);
-            waves.add(i, wave);
-            Log.d("WAVE #"+i, String.valueOf(random));
-        }
-        return waves;
-    }
+// --Commented out by Inspection START (24/04/2018 11:20):
+//    // Metodo inicializa los puntajes al azar
+//    private ArrayList<Wave> initwavestake(){
+//        ArrayList<Wave> waves = new ArrayList<>();
+//        Random r = new Random();
+//        Double random, min, max;
+//        min=1.0;
+//        max=10.0;
+//        for (int i=0; i<10; i++){
+//            random = min + (max - min) * r.nextDouble();
+//            random = round(random,1);
+//            Wave wave = new Wave(i, random);
+//            waves.add(i, wave);
+//            Log.d("WAVE #"+i, String.valueOf(random));
+//        }
+//        return waves;
+//    }
+// --Commented out by Inspection STOP (24/04/2018 11:20)
 
     // metodo inicializa los puntajes a cero
     private ArrayList<Double> initscores(int t){
@@ -110,22 +115,26 @@ public class HeatFragment extends Fragment {
         return waves;
     }*/
 
-    private ArrayList<Wave> initsortwavestaken(){
-        ArrayList<Wave> sortwaves = new ArrayList<>();
-        for (int i=0; i<10; i++){
-            sortwaves.add(i, new Wave(i, 0.0));
-        }
-        return sortwaves;
-    }
+// --Commented out by Inspection START (24/04/2018 11:20):
+//    private ArrayList<Wave> initsortwavestaken(){
+//        ArrayList<Wave> sortwaves = new ArrayList<>();
+//        for (int i=0; i<10; i++){
+//            sortwaves.add(i, new Wave(i, 0.0));
+//        }
+//        return sortwaves;
+//    }
+// --Commented out by Inspection STOP (24/04/2018 11:20)
 
-    // metodo inicializa los puntajes a cero
-    private ArrayList<Double> initheatscores(){
-        ArrayList<Double> heatscores = new ArrayList<>();
-        for (int i=0; i<10; i++){
-            heatscores.add(0.0);
-        }
-        return heatscores;
-    }
+// --Commented out by Inspection START (24/04/2018 11:21):
+//    // metodo inicializa los puntajes a cero
+//    private ArrayList<Double> initheatscores(){
+//        ArrayList<Double> heatscores = new ArrayList<>();
+//        for (int i=0; i<10; i++){
+//            heatscores.add(0.0);
+//        }
+//        return heatscores;
+//    }
+// --Commented out by Inspection STOP (24/04/2018 11:21)
 
     /*private ArrayList<Double> initheatscores(){
         ArrayList<Double> heatscores = new ArrayList<>();
@@ -190,7 +199,7 @@ public class HeatFragment extends Fragment {
         statusridersheat.add(7, getString(R.string.status7));*/
 
         // status inicial
-        statusridersheat = getString(R.string.status0);;
+        statusridersheat = getString(R.string.status0);
 
         // Inicializo valores ficticios
         ridersheat.add(new Rider(88,0,"Gustavo Alba", "Mar del Plata", "OPEN PRO", cardcolors2, initscores(10), initscores(10), initscores(4), statusridersheat));
@@ -203,7 +212,7 @@ public class HeatFragment extends Fragment {
         ridersheat.add(new Rider(77,7, "Diego Gonzalez", "Mar del Plata", "OPEN PRO", cardcolors8, initscores(10), initscores(10), initscores(4), statusridersheat));
     }
 
-    public ArrayList<Double> getScoredwaves(Rider r){
+    private ArrayList<Double> getScoredwaves(Rider r){
         int totalscored = r.getWavestaken().size();
         Log.d("TOTAL getScoredwaves >>", String.valueOf(totalscored));
         Double s;
@@ -222,7 +231,7 @@ public class HeatFragment extends Fragment {
     // 1er metodo llamado -> mover a clase Score
     // modificar aca para que puntee por el verdadero id
     // public void scoring(int idrider, int indexrider, Double scorerider) {
-    public void scoring(Double s) {
+    private void scoring(Double s) {
         if ( s!=0.0 ) {
             Rider riderNow = ridersheat.get(INDEXrider);
             String mensaje;
@@ -269,7 +278,7 @@ public class HeatFragment extends Fragment {
         } // end if
     }
     // 2do metodo llamado -> Procedimiento mejores puntajes y sumatoria total
-    public void averageScore(Rider averageRider, ArrayList<Double> averagedwaves){
+    private void averageScore(Rider averageRider, ArrayList<Double> averagedwaves){
         // ordenación descendente
         Comparator<Double> reverse = Collections.reverseOrder();
         Collections.sort(averagedwaves, reverse);
@@ -307,13 +316,13 @@ public class HeatFragment extends Fragment {
     }
 
     // 4to metodo llamado -> Procedimiento para reordenar los puestos
-    public void heatChangePosition() {
+    private void heatChangePosition() {
         Comparator<Rider> reverse = Collections.reverseOrder();
         Collections.sort(ridersheat, reverse);
     }
 
     // 5to metodo llamado -> Procedimiento para re-setear los puestos
-    public void heatSetPositions() {
+    private void heatSetPositions() {
         // Update position data values
         for (int i=0; i<ridersheat.size(); i++){
             Rider rNow = ridersheat.get(i);
@@ -327,7 +336,7 @@ public class HeatFragment extends Fragment {
     }
 
     // 6to metodo score needed to win
-    public void scoreNeededToWin(){
+    private void scoreNeededToWin(){
         Double winScore = null;
         Double winBy;
         Double loserScore;
@@ -500,7 +509,7 @@ public class HeatFragment extends Fragment {
         }
     }
 
-    public int postieBreaker(ArrayList<Double> waves1, ArrayList<Double> waves2) {
+    private int postieBreaker(ArrayList<Double> waves1, ArrayList<Double> waves2) {
         int postie = -1;
         boolean tie = true;
         for (int i=0; (i<10) && tie; i++) {
@@ -543,7 +552,7 @@ public class HeatFragment extends Fragment {
         return postie;
     }
 
-    public void changePosTieBreaker(Rider winerTie, Rider loserTie, int postie) {
+    private void changePosTieBreaker(Rider winerTie, Rider loserTie, int postie) {
         int numtiewave=postie+1;
         // obtener los puntajes donde se produce el desempate
         Double waveWiner = winerTie.getSortwavestaken().get(postie);
@@ -626,12 +635,12 @@ public class HeatFragment extends Fragment {
     }
 
     // 7mo metodo score needed to advance
-    public void scoreNeededToAdvance(){
+    /*public void scoreNeededToAdvance(){
 
-    }
+    }*/
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         vista = inflater.inflate(R.layout.fragment_heat, container, false);
         recycler = vista.findViewById(R.id.recycler_cards_heat);
@@ -656,7 +665,7 @@ public class HeatFragment extends Fragment {
                 //int id = selectrider.getId();
                 //int p = selectrider.getPosition();
                 String n = selectrider.getNombre();
-                String l = selectrider.getHometown();
+                //String l = selectrider.getHometown();
                 String s=" - ";
                 Log.d("1er INDEX RIDER",n+s+String.valueOf(INDEXrider));
                 /*
