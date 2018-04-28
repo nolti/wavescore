@@ -35,7 +35,7 @@ public class RidersAdapter extends ArrayAdapter<Rider> {
             TextView nom = (TextView) v.findViewById(R.id.nombre);
             TextView cat = (TextView) v.findViewById(R.id.categoria);
             //pos.setText(String.valueOf(o.getPosition()));
-            nom.setText(String.valueOf(o.getNombre()));
+            nom.setText(String.valueOf(o.getName()));
             cat.setText(String.valueOf(o.getCategoria()));
         }
         return v;

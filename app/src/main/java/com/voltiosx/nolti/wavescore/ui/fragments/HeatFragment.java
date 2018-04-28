@@ -237,7 +237,7 @@ public class HeatFragment extends Fragment {
             String mensaje;
             int colorlycra = riderNow.getColors().get(1);
             int t = riderNow.getWavestaken().size();
-            Log.d("RIDER ACTUAL >>> ", riderNow.getNombre());
+            Log.d("RIDER ACTUAL >>> ", riderNow.getName());
             Log.d("ID RIDER >>> ",String.valueOf(IDrider));
             Log.d("INDEX RIDER >>> ",String.valueOf(INDEXrider));
             Log.d("TOTAL WAVESTAKEN >>> ",String.valueOf(t)); // wavestaken devuelve 10 OK
@@ -255,9 +255,9 @@ public class HeatFragment extends Fragment {
                     // olas punteadas
                     scoredwaves.clear();
                     scoredwaves = getScoredwaves(riderNow); // devuelve: ArrayList<Double> scoredwaves "completado"
-                    Log.d("SCOREDWAVES ",riderNow.getNombre()+" Olas punteadas "+String.valueOf(scoredwaves));
+                    Log.d("SCOREDWAVES ",riderNow.getName()+" Olas punteadas "+String.valueOf(scoredwaves));
                     int totalscoredwaves = getScoredwaves(riderNow).size();
-                    Log.d("SCOREDWAVES ",riderNow.getNombre()+" size Olas punteadas "+String.valueOf(totalscoredwaves));
+                    Log.d("SCOREDWAVES ",riderNow.getName()+" size Olas punteadas "+String.valueOf(totalscoredwaves));
 
                     // Promedio envio --> la fila riderNow y olas punteadas
                     averageScore(riderNow, scoredwaves); //OK
@@ -265,9 +265,9 @@ public class HeatFragment extends Fragment {
                     heatSetPositions(); // OK
                     scoreNeededToWin(); // OK
                     // Log.d("VALOR i antes de break", String.valueOf(i));
-                    Log.d("PUNTEO NUM DE OLA", String.valueOf(i+1)+" PARA "+riderNow.getNombre());
+                    Log.d("PUNTEO NUM DE OLA", String.valueOf(i+1)+" PARA "+riderNow.getName());
                     if(i==9){
-                        Log.d("TOTAL DE", String.valueOf(i+1)+" OLAS PUNTEADAS PARA "+riderNow.getNombre());
+                        Log.d("TOTAL DE", String.valueOf(i+1)+" OLAS PUNTEADAS PARA "+riderNow.getName());
                         mensaje = getString(R.string.no_score_waves)+" "+getString(R.string.de)+" "+getString(R.string.lycra)+" "+colorlycra;
                         new MaterialDialog.Builder(contexto).content(mensaje).positiveText(R.string.agree).show();
                     }
@@ -290,7 +290,7 @@ public class HeatFragment extends Fragment {
             Double averagedwavescore = averagedwaves.get(i);
             // seteo el score de todas las olas tomadas en heatscores del rider
             averageRider.getSortwavestaken().set(i, averagedwavescore);
-            Log.d("OLAS sortwavestaken","#"+i+" "+averageRider.getNombre()+" Lista: "+String.valueOf(averageRider.getSortwavestaken()));
+            Log.d("OLAS sortwavestaken","#"+i+" "+averageRider.getName()+" Lista: "+String.valueOf(averageRider.getSortwavestaken()));
             if (i==0) {
                 totalscore = averagedwaves.get(i);
                 //tiebreakescore =averagedwaves.get(i);
@@ -307,8 +307,8 @@ public class HeatFragment extends Fragment {
             }
             Log.d("PASADAS", "i = "+i);
             tiebreakescore += averagedwaves.get(i);
-            Log.d("TIEBREAKSCORE var", averageRider.getNombre()+" "+tiebreakescore);
-            Log.d("TIEBREAKSCORE get", averageRider.getNombre()+" "+averageRider.getHeatscores().get(12));
+            Log.d("TIEBREAKSCORE var", averageRider.getName()+" "+tiebreakescore);
+            Log.d("TIEBREAKSCORE get", averageRider.getName()+" "+averageRider.getHeatscores().get(12));
             averageRider.getHeatscores().set(12, tiebreakescore);*/
         }
         //averageRider.getHeatscores().set(10, totalscore);
@@ -327,7 +327,7 @@ public class HeatFragment extends Fragment {
         for (int i=0; i<ridersheat.size(); i++){
             Rider rNow = ridersheat.get(i);
             //int oldposition = rNow.getPosition();
-            //String namerider = rNow.getNombre();
+            //String namerider = rNow.getName();
             // Log.d("Posicion anterior rider", namerider+": "+String.valueOf(oldposition));
             rNow.setPosition(i);
             // Log.d("Posicion nueva rider", namerider+": "+String.valueOf(i));
@@ -369,12 +369,12 @@ public class HeatFragment extends Fragment {
                     } else {
                         rider.setHeatstatus(getString(R.string.status1)); // Ganando
                     }
-                    Log.d("STATUS", rider.getNombre() +" "+ rider.getHeatstatus());
+                    Log.d("STATUS", rider.getName() +" "+ rider.getHeatstatus());
                 } else {
                     Log.d("IN","GANADOR SIN PUNTUAR");
                     // Aún no fue puntuado
                     rider.setHeatstatus(getString(R.string.status0)); // Aún no fue puntuado
-                    Log.d("STATUS", rider.getNombre() +" "+ rider.getHeatstatus());
+                    Log.d("STATUS", rider.getName() +" "+ rider.getHeatstatus());
                 }
             }
             /*if (i==1) { // Ingresa el segundo
@@ -428,7 +428,7 @@ public class HeatFragment extends Fragment {
                     }
 
                     // Log status
-                    Log.d("STATUS", rider.getNombre() +" "+ rider.getHeatstatus());
+                    Log.d("STATUS", rider.getName() +" "+ rider.getHeatstatus());
                 } else if (loserbestWave2!=0.0) { // // "B" >> ingresa si tiene dos o mas Olas puntuadas
                     Log.d("IN","DOS O MAS OLAS PUNTUADAS");
                     Log.d("OLAS","OLA1 "+loserbestWave1+" ~ OLA2 "+loserbestWave2);
@@ -460,13 +460,13 @@ public class HeatFragment extends Fragment {
                     // Set status // heatscore[1] == needtowin
                     rider.setHeatstatus(status+" "+rider.getHeatscores().get(1));
                     // Log status
-                    Log.d("STATUS", rider.getNombre() +" "+ rider.getHeatstatus());
+                    Log.d("STATUS", rider.getName() +" "+ rider.getHeatstatus());
 
                     // ingresa si hay empate
                     if (needtieScore==0.0) {
                         Log.d("EMPATE dos olas", "needtieScore==0.0");
-                        Log.d("GANADOR empate", ridersheat.get(0).getNombre()+" OLAS "+ridersheat.get(i-1).getSortwavestaken());
-                        Log.d("LOSER empate", ridersheat.get(i).getNombre()+" OLAS "+ridersheat.get(i).getSortwavestaken());
+                        Log.d("GANADOR empate", ridersheat.get(0).getName()+" OLAS "+ridersheat.get(i-1).getSortwavestaken());
+                        Log.d("LOSER empate", ridersheat.get(i).getName()+" OLAS "+ridersheat.get(i).getSortwavestaken());
                         Rider winerTie = ridersheat.get(0);
                         Rider loserTie = ridersheat.get(i);
                         int postie = postieBreaker(winerTie.getSortwavestaken(), loserTie.getSortwavestaken());
@@ -502,7 +502,7 @@ public class HeatFragment extends Fragment {
                     // Set status
                     rider.setHeatstatus(status+" "+rider.getHeatscores().get(1));
                     // Log status
-                    Log.d("STATUS", rider.getNombre() +" "+ rider.getHeatstatus());
+                    Log.d("STATUS", rider.getName() +" "+ rider.getHeatstatus());
                 }
 
             }
@@ -566,7 +566,7 @@ public class HeatFragment extends Fragment {
         int posLoser = loserTie.getPosition();
         // int fromPosition = 3; //fromPosition
         //int posAuxiliary = -1;
-        Log.d("NAMES PRE-DESEMPATE","nameWiner = "+winerTie.getNombre()+" - "+"nameLoser = "+loserTie.getNombre());
+        Log.d("NAMES PRE-DESEMPATE","nameWiner = "+winerTie.getName()+" - "+"nameLoser = "+loserTie.getName());
         Log.d("POSICION PRE-DESEMPATE","posWiner = "+posWiner+" - "+"posLoser = "+posLoser);
         Log.d("IDs PRE-DESEMPATE","idWiner = "+winerTie.getId()+" - "+"idLoser = "+loserTie.getId());
 
@@ -599,8 +599,8 @@ public class HeatFragment extends Fragment {
             // update de tiestatus
             tiestatus = getString(R.string.status9)+" "+difscoretie+" "+getString(R.string.status10)+" "+numtiewave;
             // update de status
-            Log.d("win setHeatstatus", "#"+winerTie.getPosition()+" id "+winerTie.getId()+" nombre "+winerTie.getNombre());
-            Log.d("loser setHeatstatus", "#"+loserTie.getPosition()+" id "+loserTie.getId()+" nombre "+loserTie.getNombre());
+            Log.d("win setHeatstatus", "#"+winerTie.getPosition()+" id "+winerTie.getId()+" nombre "+winerTie.getName());
+            Log.d("loser setHeatstatus", "#"+loserTie.getPosition()+" id "+loserTie.getId()+" nombre "+loserTie.getName());
             loserTie.setHeatstatus(winerauxiliary+" / "+tiestatus);
             winerTie.setHeatstatus(loserauxiliary);
 
@@ -616,7 +616,7 @@ public class HeatFragment extends Fragment {
             //heatAdapter.notifyDataSetChanged();
 
             Log.d("DESEMPATADOS","OK \"se cambiaron las posiciones\"");
-            Log.d("NOMBRES DESEMPATADOS","nameWiner = "+winerTie.getNombre()+" - "+"nameLoser = "+loserTie.getNombre());
+            Log.d("NOMBRES DESEMPATADOS","nameWiner = "+winerTie.getName()+" - "+"nameLoser = "+loserTie.getName());
             Log.d("POSICION DESEMPATADOS","posWiner = "+winerTie.getPosition()+" - "+"posLoser = "+loserTie.getPosition());
             Log.d("ID DESEMPATADOS","idWiner = "+winerTie.getId()+" - "+"idLoser = "+loserTie.getId());
             Log.d("STATUS winerTie", winerTie.getHeatstatus());
@@ -664,7 +664,7 @@ public class HeatFragment extends Fragment {
                 INDEXrider = selectrider.getPosition();
                 //int id = selectrider.getId();
                 //int p = selectrider.getPosition();
-                String n = selectrider.getNombre();
+                String n = selectrider.getName();
                 //String l = selectrider.getHometown();
                 String s=" - ";
                 Log.d("1er INDEX RIDER",n+s+String.valueOf(INDEXrider));

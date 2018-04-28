@@ -11,5 +11,6 @@
 
     <dimen name="score_text_size">30dp</dimen>
     <dimen name="score_selected_text_size">35dp</dimen>
+    <dimen name="text_margin">16dp</dimen>
 
 </resources>

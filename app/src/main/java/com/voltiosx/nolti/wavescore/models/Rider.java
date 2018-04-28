@@ -9,7 +9,7 @@ public class Rider implements Comparable<Rider>, Parcelable {
 
     private int id;
     private int position;
-    private String nombre;
+    private String name;
     private String hometown;
     private String categoria;
     private ArrayList<Integer> colors;
@@ -18,10 +18,10 @@ public class Rider implements Comparable<Rider>, Parcelable {
     private ArrayList<Double> heatscores;
     private String heatstatus;
 
-    public Rider(int id, int position, String nombre, String hometown, String categoria, ArrayList<Integer> colors, ArrayList<Double> wavestaken, ArrayList<Double> sortwavestaken, ArrayList<Double> heatscores, String heatstatus) {
+    public Rider(int id, int position, String name, String hometown, String categoria, ArrayList<Integer> colors, ArrayList<Double> wavestaken, ArrayList<Double> sortwavestaken, ArrayList<Double> heatscores, String heatstatus) {
         this.setId(id);
         this.setPosition(position);
-        this.setNombre(nombre);
+        this.setName(name);
         this.setHometown(hometown);
         this.setCategoria(categoria);
         this.setColors(colors);
@@ -45,18 +45,18 @@ public class Rider implements Comparable<Rider>, Parcelable {
         this.position = position;
     }
 
-    public String getNombre() {
-        return nombre;
+    public String getName() {
+        return name;
     }
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
+    public void setName(String name) {
+        this.name = name;
     }
 
     public String getHometown() {
         return hometown;
     }
-    public void setHometown(String nombre) {
-        this.hometown = nombre;
+    public void setHometown(String name) {
+        this.hometown = name;
     }
 
     public ArrayList<Integer> getColors() {
@@ -102,7 +102,7 @@ public class Rider implements Comparable<Rider>, Parcelable {
     protected Rider(Parcel in) {
         this.id = in.readInt();
         this.position = in.readInt();
-        this.nombre = in.readString();
+        this.name = in.readString();
         this.hometown = in.readString();
         this.categoria = in.readString();
     }
@@ -116,7 +116,7 @@ public class Rider implements Comparable<Rider>, Parcelable {
     public void writeToParcel(Parcel dest, int flags) {
         dest.writeInt(id);
         dest.writeInt(position);
-        dest.writeString(nombre);
+        dest.writeString(name);
         dest.writeString(hometown);
         dest.writeString(categoria);
     }

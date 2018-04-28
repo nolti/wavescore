@@ -49,7 +49,7 @@ public class HeatAdapter_bak extends ArrayAdapter<Rider> implements View.OnClick
         }
         String name, hometown, ranking, bestwave1, bestwave2, totalscore;
         Rider r=riders.get(position);
-        name = r.getNombre();
+        name = r.getName();
         hometown = r.getHometown();
 
         TextView tv_name, tv_hometown, tv_ranking, tv_bestwave1, tv_bestwave2, tv_totalscore; //variables seteadas inicialmente

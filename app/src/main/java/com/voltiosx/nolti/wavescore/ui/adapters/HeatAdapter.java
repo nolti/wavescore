@@ -118,7 +118,7 @@ public class HeatAdapter extends RecyclerView.Adapter<HeatAdapter.viewHolderRide
         /* SETEO DE DATOS */
 
         // rider data
-        holder.tv_name.setText(r.getNombre());
+        holder.tv_name.setText(r.getName());
         holder.tv_hometown.setText(r.getHometown());
         holder.tv_status.setText(r.getHeatstatus());
 
