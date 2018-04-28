@@ -34,6 +34,7 @@ import com.voltiosx.nolti.wavescore.ui.fragments.M14Fragment;
 import com.voltiosx.nolti.wavescore.ui.fragments.M16Fragment;
 import com.voltiosx.nolti.wavescore.ui.fragments.M18Fragment;
 import com.voltiosx.nolti.wavescore.ui.fragments.MastersFragment;
+import com.voltiosx.nolti.wavescore.ui.fragments.ResultsFragment;
 import com.voltiosx.nolti.wavescore.ui.fragments.ScorePickerFragment;
 import com.voltiosx.nolti.wavescore.ui.fragments.ViewPagerInscriptosFragment;
 import com.voltiosx.nolti.wavescore.ui.fragments.OpenProFragment;
@@ -48,7 +49,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         OpenProFragment.OnFragmentInteractionListener, DKProFragment.OnFragmentInteractionListener, DamasFragment.OnFragmentInteractionListener,
         M18Fragment.OnFragmentInteractionListener, M16Fragment.OnFragmentInteractionListener, M14Fragment.OnFragmentInteractionListener, M12Fragment.OnFragmentInteractionListener,
         AmateursFragment.OnFragmentInteractionListener, MastersFragment.OnFragmentInteractionListener,
-        ScorePickerFragment.OnFragmentInteractionListener, ScorePickerComunicator {
+        ScorePickerFragment.OnFragmentInteractionListener, ScorePickerComunicator, ResultsFragment.OnFragmentInteractionListener {
 
     /* VARIABLES GLOBALES */
     String categoryName;
@@ -59,6 +60,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     /* FRAGMENTS */
     Fragment inscriptosViewPager = new ViewPagerInscriptosFragment();
     Fragment heatFragment = new HeatFragment();
+    Fragment resultsFragment = new ResultsFragment();
     Fragment scorePickerFragment = new ScorePickerFragment();
     android.support.v4.app.FragmentManager fragmentmanager = getSupportFragmentManager();
     /* VARIABLES GLOBALES SCORING */
@@ -205,6 +207,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         } else if (id == R.id.nav_puntuaciones) {
             fragmentmanager.beginTransaction().replace(R.id.maincontainer, scorePickerFragment).addToBackStack(null).commit();
         } else if (id == R.id.nav_resultados) {
+            fragmentmanager.beginTransaction().replace(R.id.maincontainer, resultsFragment).addToBackStack(null).commit();
         }
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
