@@ -106,7 +106,7 @@ public class ResultsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
 				// Seteo de todos los datos del objeto resultado
 				holder.tv_name.setText(result.getName());
 				holder.tv_hometown.setText(result.getHometown());
-				holder.tv_ranking.setText(result.getRanking());
+				holder.tv_ranking.setText("Rank #"+result.getRanking());
 				holder.tv_wave1.setText(String.valueOf(result.getWavestaken().get(0)));
                 holder.tv_wave2.setText(String.valueOf(result.getWavestaken().get(1)));
                 holder.tv_wave3.setText(String.valueOf(result.getWavestaken().get(2)));

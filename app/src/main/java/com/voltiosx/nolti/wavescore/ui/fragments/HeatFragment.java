@@ -12,6 +12,8 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+
 import com.afollestad.materialdialogs.MaterialDialog;
 import com.voltiosx.nolti.wavescore.R;
 import com.voltiosx.nolti.wavescore.io.ScorePickerComunicator;
@@ -46,12 +48,14 @@ public class HeatFragment extends Fragment {
     private View vista;
     private RecyclerView recycler;
     private HeatAdapter heatAdapter;
+    private Button btnResults;
 
     /* VARIABLES HEAT SCORING GLOBALES*/
     private int IDrider;
     private int INDEXrider;
     // --Commented out by Inspection (24/04/2018 11:20):public static int maxwaves = 10;
     private Double scorerider, totalscore;
+    // Fragment receptor de los resultados del Heat
 
     // Required empty public constructor
     public HeatFragment() {
@@ -143,6 +147,20 @@ public class HeatFragment extends Fragment {
         }
         return heatscores;
     }*/
+
+    /* metodo BUNDLE envia los resultados a ResultFragment */
+    private void sendHeatResults(){
+        /* TRANSPORTO LOS DATOS DE LOS RESULTADOS */
+        // preparo el paquete
+        Bundle bundle = new Bundle();
+        bundle.putParcelableArrayList("results", ridersheat);
+        // defino el destinatario
+        Fragment resultsFragment = new ResultsFragment();
+        // envio el paquete al destinatario
+        resultsFragment.setArguments(bundle);
+        // abro ResultFragment
+        Objects.requireNonNull(getFragmentManager()).beginTransaction().replace(R.id.maincontainer, resultsFragment).addToBackStack(null).commit();
+    }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -649,6 +667,15 @@ public class HeatFragment extends Fragment {
         heatAdapter = new HeatAdapter(ridersheat);
         recycler.setAdapter(heatAdapter);
         heatAdapter.notifyDataSetChanged(); // Refresco el adaptador
+
+        /* BOTON RESULTADOS */
+        btnResults = vista.findViewById(R.id.btn_results);
+        btnResults.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                sendHeatResults();
+            }
+        });
 
         /* BOTON CARD RIDER */
         heatAdapter.setOnClickListener(new View.OnClickListener() {

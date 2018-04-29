@@ -7,6 +7,7 @@ import android.support.v4.app.Fragment;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,6 +16,7 @@ import com.voltiosx.nolti.wavescore.R;
 import com.voltiosx.nolti.wavescore.models.InstanceItem;
 import com.voltiosx.nolti.wavescore.models.ListItem;
 import com.voltiosx.nolti.wavescore.models.ResultItem;
+import com.voltiosx.nolti.wavescore.models.Rider;
 import com.voltiosx.nolti.wavescore.ui.adapters.ResultsAdapter;
 import com.voltiosx.nolti.wavescore.ui.fragments.dummy.DummyContent;
 import com.voltiosx.nolti.wavescore.ui.fragments.dummy.DummyContent.DummyItem;
@@ -28,9 +30,9 @@ import java.util.Random;
 public class ResultsFragment extends Fragment {
 
     // TODO: Customize parameter argument names
-    private static final String ARG_COLUMN_COUNT = "column-count";
+    private static final String KEY = "results";
     // TODO: Customize parameters
-    private int mColumnCount = 1;
+    private ArrayList<Rider> resultsheat = new ArrayList<>();
     private OnFragmentInteractionListener mListener;
 
     @NonNull
@@ -55,7 +57,8 @@ public class ResultsFragment extends Fragment {
 
         // Recibe argumentos
         if (getArguments() != null) {
-            mColumnCount = getArguments().getInt(ARG_COLUMN_COUNT);
+            resultsheat = getArguments().getParcelableArrayList(KEY);
+            Log.d("RESULTADOS DEL HEAT", String.valueOf(resultsheat));
         }
 
     }
@@ -66,7 +69,25 @@ public class ResultsFragment extends Fragment {
         View vista = inflater.inflate(R.layout.fragment_results, container, false);
         Context contexto = vista.getContext();
 
-        // inicializo colores lycras
+        // FORMATEO LA INSTANCIA
+        items.add(new InstanceItem("Semifinal #1"));
+        // FORMATEO LOS RESULTADOS
+        // int totresults = resultsheat.size();
+        int totadvancing = 2;
+        for (int i=0; i<totadvancing ;i++){
+            Rider rider = resultsheat.get(i);
+            int id = rider.getId();
+            int position = rider.getPosition();
+            String name = rider.getName();
+            String hometown = rider.getHometown();
+            int ranking = 7;//int ranking = rider.getRanking();
+            Double score = rider.getHeatscores().get(0);
+            ArrayList<Integer> tablecolor = rider.getColors();
+            ArrayList<Double> wavestaken = rider.getWavestaken();
+            items.add(new ResultItem(id, position, name, hometown, ranking, score, tablecolor, wavestaken));
+        }
+
+        /*// inicializo colores lycras
         int colorTextLight = getResources().getColor(R.color.colorTextLight);
         int lycra1 = getResources().getColor(R.color.colorLycra1);
         ArrayList<Integer> tablecolor1 = new ArrayList<>();
@@ -85,7 +106,7 @@ public class ResultsFragment extends Fragment {
         items.add(new InstanceItem("Semifinal #2"));
         for (int i=0; i<2;i++){
             items.add(new ResultItem(0, i, "Nombre Apellido" +i,"Ciudad Natal"+i,"Rank #"+i,"14."+i, tablecolor1, initwavestaken()));
-        }
+        }*/
 
         // Set the adapter to RECYCLER
         RecyclerView recycler = vista.findViewById(R.id.recycler_results_heat);

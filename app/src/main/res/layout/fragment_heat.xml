@@ -1,15 +1,39 @@
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/primaryDarkColor"
     tools:context="com.voltiosx.nolti.wavescore.ui.fragments.HeatFragment">
 
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/recycler_cards_heat"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginBottom="16dp"
-        android:layout_marginTop="@dimen/margin_top_toolbar"/>
+        android:gravity="center_horizontal"
+        android:orientation="vertical">
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_top_toolbar" />
+
+        <Button
+            android:id="@+id/btn_results"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="0dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="4dp"
+            android:backgroundTint="@color/colorLycra4"
+            android:text="Resultados" />
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/recycler_cards_heat"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginStart="0dp"
+            android:layout_marginTop="0dp" />
+    </LinearLayout>
 
 </FrameLayout>

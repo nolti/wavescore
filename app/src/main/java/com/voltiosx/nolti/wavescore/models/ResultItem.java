@@ -8,12 +8,12 @@ public class ResultItem extends ListItem {
 	private int position;
 	private String name;
 	private String hometown;
-	private String ranking;
-	private String score;
+	private int ranking;
+	private Double score;
 	private ArrayList<Integer> colors;
 	private ArrayList<Double> wavestaken;
 
-	public ResultItem(int id, int position, String name, String hometown, String ranking, String score, ArrayList<Integer> colors, ArrayList<Double> wavestaken) {
+	public ResultItem(int id, int position, String name, String hometown, int ranking, Double score, ArrayList<Integer> colors, ArrayList<Double> wavestaken) {
 		this.setId(id);
 		this.setPosition(position);
 		this.setName(name);
@@ -52,17 +52,17 @@ public class ResultItem extends ListItem {
 		this.hometown = name;
 	}
 
-	public String getRanking() {
+	public int getRanking() {
 		return ranking;
 	}
-	public void setRanking(String ranking) {
+	public void setRanking(int ranking) {
 		this.ranking = ranking;
 	}
 
-	public String getScore() {
+	public Double getScore() {
 		return score;
 	}
-	public void setScore(String score) {
+	public void setScore(Double score) {
 		this.score = score;
 	}
 
@@ -79,7 +79,6 @@ public class ResultItem extends ListItem {
 	public void setWavestaken(ArrayList<Double> wavestaken) {
 		this.wavestaken = wavestaken;
 	}
-
 
 	@Override
 	public int getType() {
