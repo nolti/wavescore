@@ -4,7 +4,7 @@
 	xmlns:tools="http://schemas.android.com/tools"
 	android:layout_width="match_parent"
 	android:layout_height="72dp"
-	android:background="@color/primaryDarkColor"
+	android:background="@color/inactive"
 	android:orientation="horizontal"
 	android:padding="0dp">
 
@@ -27,7 +27,7 @@
 		android:background="@color/secondaryTextColor"
 		android:gravity="center_vertical|center_horizontal"
 		android:padding="16dp"
-		android:textColor="@color/primaryColor"
+		android:textColor="@color/monokai_fg3"
 		android:visibility="invisible"
 		tools:text="0" />
 
@@ -43,7 +43,7 @@
 		android:padding="16dp"
 		android:paddingEnd="0dp"
 		android:paddingStart="16dp"
-		android:textColor="@color/primaryTextColor"
+		android:textColor="@color/monokai_fg2"
 		android:textSize="14sp"
 		android:textStyle="normal"
 		tools:text=" rider" />
@@ -58,8 +58,8 @@
 		android:gravity="center_vertical|center_horizontal|end"
 		android:maxLines="1"
 		android:padding="16dp"
-		android:textColor="@color/terciaryTextColor"
-		android:textSize="10sp"
+		android:textColor="@color/monokai_magentuosa"
+		android:textSize="12sp"
 		tools:text="categoria" />
 
 	<!-- android:textColorLink="@color/colorAccent" -->

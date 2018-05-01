@@ -3,7 +3,7 @@
     android:id="@+id/maincontainer"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/primaryDarkColor"
+    android:background="@color/inactive"
     tools:context="com.voltiosx.nolti.wavescore.ui.fragments.InscriptosFragment">
 
     <!--tools:context="com.voltiosx.nolti.wavescore.ui.fragments.ContainerFragment"-->
@@ -19,7 +19,7 @@
         android:id="@+id/inscriptos_chekin"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:divider="@color/inactive"
+        android:divider="@color/inactiveTextColor"
         android:dividerHeight="1dp" />
 
 </FrameLayout>

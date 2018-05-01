@@ -102,7 +102,29 @@ public class ResultsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
 			}
 			case ListItem.TYPE_TABLE: {
 				ResultItem result = (ResultItem) items.get(position);
+				int t = result.getColors().get(0);
 				TableRsultViewHolder holder = (TableRsultViewHolder) viewHolder;
+
+				/* SETEO DE COLORES */
+				// rider data
+				holder.tablelayout.setBackgroundColor(result.getColors().get(1));
+				holder.tv_name.setTextColor(t);
+				holder.tv_hometown.setTextColor(t);
+				holder.tv_ranking.setTextColor(t);
+				// score data
+				holder.tv_wave1.setTextColor(t);
+				holder.tv_wave2.setTextColor(t);
+				holder.tv_wave3.setTextColor(t);
+				holder.tv_wave4.setTextColor(t);
+				holder.tv_wave5.setTextColor(t);
+				holder.tv_wave6.setTextColor(t);
+				holder.tv_wave7.setTextColor(t);
+				holder.tv_wave8.setTextColor(t);
+				holder.tv_wave9.setTextColor(t);
+				holder.tv_wave10.setTextColor(t);
+				holder.tv_total_score.setTextColor(t);
+
+				/* SETEO DE DATOS */
 				// Seteo de todos los datos del objeto resultado
 				holder.tv_name.setText(result.getName());
 				holder.tv_hometown.setText(result.getHometown());

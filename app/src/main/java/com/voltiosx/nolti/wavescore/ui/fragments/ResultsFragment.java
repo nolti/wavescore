@@ -72,8 +72,8 @@ public class ResultsFragment extends Fragment {
         // FORMATEO LA INSTANCIA
         items.add(new InstanceItem("Semifinal #1"));
         // FORMATEO LOS RESULTADOS
-        // int totresults = resultsheat.size();
-        int totadvancing = 2;
+        int totadvancing = resultsheat.size();
+        //int totadvancing = 2;
         for (int i=0; i<totadvancing ;i++){
             Rider rider = resultsheat.get(i);
             int id = rider.getId();

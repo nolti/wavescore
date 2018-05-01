@@ -3,7 +3,8 @@
 
     <color name="opaco50">#50000000</color>
     <color name="opaco30">#30000000</color>
-    <color name="primaryColor">#182131</color>
+    <!--<color name="primaryColor">#272822</color>-->
+    <color name="primaryColor">#2c292e</color>
     <color name="primaryDarkColor">#191919</color>
     <color name="colorAccent">#3ca4dc</color>
     <color name="primaryLightColor">#25334b</color>
@@ -20,13 +21,39 @@
     <color name="colorTextLight">#ffffff</color>
     <color name="colorTextDark">#424242</color>
 
-    <color name="colorLycra1">#ec407a</color>
+    <!--<color name="colorLycra1">#F92672</color>-->
+    <!--<color name="colorLycra1">#ec407a</color>-->
+    <color name="colorLycra1">#F65282</color>
     <color name="colorLycra2">#2196f3</color>
-    <color name="colorLycra3">#ffeb3b</color>
+    <!--<color name="colorLycra3">#ffeb3b</color>-->
+    <color name="colorLycra3">#E6DB74</color>
     <color name="colorLycra4">#009688</color>
-    <color name="colorLycra5">#ff5722</color>
-    <color name="colorLycra6">#673ab7</color>
+    <color name="colorLycra5">#FEA862</color>
+    <!--<color name="colorLycra5">#FF8C52</color>-->
+    <!--<color name="colorLycra5">#FD971F</color>-->
+    <color name="colorLycra6">#6957a0</color>
+    <!--<color name="colorLycra6">#AE81FF</color>-->
     <color name="colorLycra7">#424242</color>
     <color name="colorLycra8">#fafafa</color>
+
+    <color name="monokai_bg0">#272822</color>
+    <color name="monokai_bg1">#3e3d32</color>
+    <color name="monokai_bg2">#75715e</color>
+    <color name="monokai_bg3">#FFFFFF</color>
+    <color name="monokai_fg0">#f8f8f2</color>
+    <color name="monokai_fg1">#cfcfc2</color>
+    <color name="monokai_fg2">#ffffff</color>
+    <color name="monokai_fg3">#676761</color>
+    <color name="monokai_blue">#66D9EF</color>
+    <color name="monokai_cyan">#A1EFE4</color>
+    <color name="monokai_emerald">#78DDE8</color>
+    <color name="monokai_violet">#AE81FF</color>
+    <color name="monokai_lila">#aa9cf2</color>
+    <color name="monokai_magenta">#FD5FF0</color>
+    <color name="monokai_magentuosa">#ff6188</color>
+    <color name="monokai_red">#F92672</color>
+    <color name="monokai_ornge">#FD971F</color>
+    <color name="monokai_yellow">#E6DB74</color>
+    <color name="monokai_green">#A6E22E</color>
 
 </resources>

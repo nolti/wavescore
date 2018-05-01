@@ -196,7 +196,7 @@ public class HeatFragment extends Fragment {
         cardcolors3.add(lycra3);
         cardcolors4.add(colorTextLight);
         cardcolors4.add(lycra4);
-        cardcolors5.add(colorTextLight);
+        cardcolors5.add(colorTextDark);
         cardcolors5.add(lycra5);
         cardcolors6.add(colorTextLight);
         cardcolors6.add(lycra6);
@@ -220,12 +220,12 @@ public class HeatFragment extends Fragment {
         statusridersheat = getString(R.string.status0);
 
         // Inicializo valores ficticios
+        ridersheat.add(new Rider(55,5, "Hugo Rolón", "Mar del Plata", "OPEN PRO", cardcolors6, initscores(10), initscores(10), initscores(4), statusridersheat));
         ridersheat.add(new Rider(88,0,"Gustavo Alba", "Mar del Plata", "OPEN PRO", cardcolors2, initscores(10), initscores(10), initscores(4), statusridersheat));
         ridersheat.add(new Rider(11,1,"Manuel Santamaria", "Mar del Plata", "OPEN PRO", cardcolors1, initscores(10), initscores(10), initscores(4), statusridersheat));
         ridersheat.add(new Rider(22,2,"Emiliano Tabare", "Mar del Plata", "OPEN PRO", cardcolors3, initscores(10), initscores(10), initscores(4), statusridersheat));
-        ridersheat.add(new Rider(33,3,"Eric Barberón ", "Necochea", "OPEN PRO", cardcolors4, initscores(10), initscores(10), initscores(4), statusridersheat));
         ridersheat.add(new Rider(44,4, "Patricio Galay ", "Mar del Plata", "OPEN PRO", cardcolors5, initscores(10), initscores(10), initscores(4), statusridersheat));
-        ridersheat.add(new Rider(55,5, "Hugo Rolón", "Mar del Plata", "OPEN PRO", cardcolors6, initscores(10), initscores(10), initscores(4), statusridersheat));
+        ridersheat.add(new Rider(33,3,"Eric Barberón ", "Necochea", "OPEN PRO", cardcolors4, initscores(10), initscores(10), initscores(4), statusridersheat));
         ridersheat.add(new Rider(66,6, "Ariel Di Giusto", "Santa Teresita", "OPEN PRO", cardcolors7, initscores(10), initscores(10), initscores(4), statusridersheat));
         ridersheat.add(new Rider(77,7, "Diego Gonzalez", "Mar del Plata", "OPEN PRO", cardcolors8, initscores(10), initscores(10), initscores(4), statusridersheat));
     }
