@@ -10,24 +10,19 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:gravity="center_horizontal"
-        android:orientation="vertical"
-        android:paddingBottom="16dp">
-
-        <Space
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/margin_top_toolbar" />
+        android:orientation="vertical">
 
         <Button
             android:id="@+id/btn_results"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="0dp"
-            android:layout_marginEnd="8dp"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="4dp"
-            android:backgroundTint="@color/colorLycra4"
-            android:text="Resultados" />
+            android:layout_marginEnd="4dp"
+            android:layout_marginStart="4dp"
+            android:layout_marginTop="2dp"
+            android:backgroundTint="@color/colorLycra2"
+            android:text="@string/resultados"
+            android:textColor="@color/colorTextLight" />
 
         <android.support.v7.widget.RecyclerView
             android:id="@+id/recycler_cards_heat"

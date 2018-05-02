@@ -4,7 +4,8 @@
     <color name="opaco50">#50000000</color>
     <color name="opaco30">#30000000</color>
     <!--<color name="primaryColor">#272822</color>-->
-    <color name="primaryColor">#2c292e</color>
+    <!--<color name="primaryColor">#2c292e</color>-->
+    <color name="primaryColor">#282A36</color>
     <color name="primaryDarkColor">#191919</color>
     <color name="colorAccent">#3ca4dc</color>
     <color name="primaryLightColor">#25334b</color>
@@ -46,12 +47,12 @@
     <color name="monokai_fg3">#676761</color>
     <color name="monokai_blue">#66D9EF</color>
     <color name="monokai_cyan">#A1EFE4</color>
-    <color name="monokai_emerald">#78DDE8</color>
+    <color name="monokai_emerald">#78dde8</color>
     <color name="monokai_violet">#AE81FF</color>
     <color name="monokai_lila">#aa9cf2</color>
     <color name="monokai_magenta">#FD5FF0</color>
     <color name="monokai_magentuosa">#ff6188</color>
-    <color name="monokai_red">#F92672</color>
+    <color name="monokai_red">#f92672</color>
     <color name="monokai_ornge">#FD971F</color>
     <color name="monokai_yellow">#E6DB74</color>
     <color name="monokai_green">#A6E22E</color>
