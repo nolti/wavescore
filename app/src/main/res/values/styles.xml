@@ -8,9 +8,6 @@
         <item name="colorAccent">@color/colorAccent</item>
         <item name="drawerArrowStyle">@style/MyDrawerArrowToggle</item>
         <item name="android:actionOverflowButtonStyle">@style/settingBtn</item>
-
-
-
     </style>
 
     <style name="AppTheme.NoActionBar" parent="ThemeOverlay.AppCompat.Dark">

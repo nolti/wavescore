@@ -5,4 +5,9 @@
         <item name="windowNoTitle">true</item>
         <item name="android:statusBarColor">@android:color/transparent</item>
     </style>
+
+    <style name="raisedBtn" parent="AppTheme">
+        <item name="colorControlHighlight">@color/monokai_yellow</item>
+        <item name="colorButtonNormal">@color/monokai_cyan</item>
+    </style>
 </resources>

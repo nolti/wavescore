@@ -14,6 +14,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Adapter;
 import android.widget.Button;
+import android.widget.FrameLayout;
 import android.widget.GridView;
 import android.widget.ListAdapter;
 import android.widget.TextView;
@@ -29,6 +30,8 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.Iterator;
 import java.util.ListIterator;
+
+import at.markushi.ui.CircleButton;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import butterknife.Unbinder;
@@ -40,9 +43,11 @@ public class ScorePickerFragment extends Fragment {
     private String[] data = {"10", "9.5", "9", "8.5", "8", "7.5", "7", "6.5", "6", "5.5", "5", "4.5", "4", "3.5", "3", "2.5", "2", "1.5", "1"};
     public View vista;
     // public GridView gridWaves;
+    private FrameLayout frameScorepicker;
+    private int bakgroundScorepicker;
     private Double score;
     private TextView tvScore;
-    private Button btnScore;
+    private CircleButton btnScore;
     private Button btnClose;
     // private int idrider;
     // private int index;
@@ -67,6 +72,8 @@ public class ScorePickerFragment extends Fragment {
         super.onCreate(savedInstanceState);
         // recibo el iD del rider a calificar
         if (getArguments()!=null) {
+            //bundlescorepicker.putInt("bakgroundScorepicker", COLORrider);
+            bakgroundScorepicker = getArguments().getInt("bakgroundScorepicker");
             // idrider = getArguments().getInt("idrider");
             // index = getArguments().getInt("index");
             // Log.d("ID SCOREPICKER ", String.valueOf(idrider));
@@ -80,11 +87,15 @@ public class ScorePickerFragment extends Fragment {
 
         context = getContext();
         vista = inflater.inflate(R.layout.score_picker, container, false);
+        frameScorepicker = vista.findViewById(R.id.bg_scorepicker);
         // gridWaves = vista.findViewById(R.id.gridwaves);
         tvScore = vista.findViewById(R.id.tv_score);
         btnScore = vista.findViewById(R.id.btn_score);
         btnClose = vista.findViewById(R.id.btn_close);
         NumberPicker numberPicker = vista.findViewById(R.id.number_picker);
+
+        // Set background color
+        frameScorepicker.setBackgroundColor(bakgroundScorepicker);
 
         // Set divider color
         numberPicker.setDividerColor(ContextCompat.getColor(context, R.color.secondaryLightColor));

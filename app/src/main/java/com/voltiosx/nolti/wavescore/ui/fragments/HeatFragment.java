@@ -53,6 +53,7 @@ public class HeatFragment extends Fragment {
     /* VARIABLES HEAT SCORING GLOBALES*/
     private int IDrider;
     private int INDEXrider;
+    private int COLORrider;
     // --Commented out by Inspection (24/04/2018 11:20):public static int maxwaves = 10;
     private Double scorerider, totalscore;
     // Fragment receptor de los resultados del Heat
@@ -71,7 +72,10 @@ public class HeatFragment extends Fragment {
 
     // NO LE PASO NADA solo necesito saber el valor de scorepicker al regresar
     private void scorepicker(){
+        Bundle bundlescorepicker = new Bundle();
+        bundlescorepicker.putInt("bakgroundScorepicker", COLORrider);
         ScorePickerFragment scorePickerFragment = new ScorePickerFragment();
+        scorePickerFragment.setArguments(bundlescorepicker);
         Objects.requireNonNull(getFragmentManager()).beginTransaction().replace(R.id.maincontainer, scorePickerFragment).addToBackStack(null).commit();
         //Log.d("SCOREPICKER ", "open");
     }
@@ -689,6 +693,7 @@ public class HeatFragment extends Fragment {
                 // Actualizo Globales a puntear
                 IDrider = selectrider.getId();
                 INDEXrider = selectrider.getPosition();
+                COLORrider = selectrider.getColors().get(1);
                 //int id = selectrider.getId();
                 //int p = selectrider.getPosition();
                 String n = selectrider.getName();

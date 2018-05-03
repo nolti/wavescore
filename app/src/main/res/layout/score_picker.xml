@@ -2,6 +2,7 @@
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/bg_scorepicker"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/primaryDarkColor"
@@ -28,20 +29,19 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <Button
+
+         <at.markushi.ui.CircleButton
             android:id="@+id/btn_score"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="8dp"
-            android:layout_marginEnd="16dp"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
-            android:backgroundTint="@color/colorAccent"
-            android:text="ok"
-            android:textColor="@color/primaryColor"
-            android:textSize="36sp"
-            android:textStyle="bold"
+            android:layout_width="72dp"
+            android:layout_height="72dp"
+
+            android:padding="12dp"
+            android:src="@drawable/ic_check_white"
+            app:cb_color="@color/monokai_red"
+            app:cb_pressedRingWidth="8dip"
             app:layout_constraintBottom_toTopOf="@+id/number_picker"
+
+
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.762"
             app:layout_constraintStart_toStartOf="parent"
