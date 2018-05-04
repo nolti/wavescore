@@ -54,6 +54,7 @@ public class HeatFragment extends Fragment {
     private int IDrider;
     private int INDEXrider;
     private int COLORrider;
+    private int TEXTCOLORrider;
     // --Commented out by Inspection (24/04/2018 11:20):public static int maxwaves = 10;
     private Double scorerider, totalscore;
     // Fragment receptor de los resultados del Heat
@@ -74,6 +75,7 @@ public class HeatFragment extends Fragment {
     private void scorepicker(){
         Bundle bundlescorepicker = new Bundle();
         bundlescorepicker.putInt("bakgroundScorepicker", COLORrider);
+        bundlescorepicker.putInt("colorScorepicker", TEXTCOLORrider);
         ScorePickerFragment scorePickerFragment = new ScorePickerFragment();
         scorePickerFragment.setArguments(bundlescorepicker);
         Objects.requireNonNull(getFragmentManager()).beginTransaction().replace(R.id.maincontainer, scorePickerFragment).addToBackStack(null).commit();
@@ -694,6 +696,7 @@ public class HeatFragment extends Fragment {
                 IDrider = selectrider.getId();
                 INDEXrider = selectrider.getPosition();
                 COLORrider = selectrider.getColors().get(1);
+                TEXTCOLORrider = selectrider.getColors().get(0);
                 //int id = selectrider.getId();
                 //int p = selectrider.getPosition();
                 String n = selectrider.getName();

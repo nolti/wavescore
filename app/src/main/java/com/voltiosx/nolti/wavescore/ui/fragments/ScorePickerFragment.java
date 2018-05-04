@@ -20,7 +20,9 @@ import android.widget.ListAdapter;
 import android.widget.TextView;
 import com.afollestad.materialdialogs.MaterialDialog;
 import com.shawnlin.numberpicker.NumberPicker;
+//import com.voltiosx.nolti.wavescore.R;
 import com.voltiosx.nolti.wavescore.R;
+import com.voltiosx.nolti.wavescore.clases.CircleButton;
 import com.voltiosx.nolti.wavescore.io.ScorePickerComunicator;
 import com.voltiosx.nolti.wavescore.models.Wave;
 import com.voltiosx.nolti.wavescore.ui.adapters.WavesAdapter;
@@ -30,8 +32,7 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.Iterator;
 import java.util.ListIterator;
-
-import at.markushi.ui.CircleButton;
+//import at.markushi.ui.CircleButton;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import butterknife.Unbinder;
@@ -45,10 +46,11 @@ public class ScorePickerFragment extends Fragment {
     // public GridView gridWaves;
     private FrameLayout frameScorepicker;
     private int bakgroundScorepicker;
+    private int colorScorepicker;
     private Double score;
     private TextView tvScore;
     private CircleButton btnScore;
-    private Button btnClose;
+    private CircleButton btnClose;
     // private int idrider;
     // private int index;
     // private Double score, bestscore1, bestscore2, totalscore = 0.0;
@@ -74,6 +76,7 @@ public class ScorePickerFragment extends Fragment {
         if (getArguments()!=null) {
             //bundlescorepicker.putInt("bakgroundScorepicker", COLORrider);
             bakgroundScorepicker = getArguments().getInt("bakgroundScorepicker");
+            colorScorepicker = getArguments().getInt("colorScorepicker");
             // idrider = getArguments().getInt("idrider");
             // index = getArguments().getInt("index");
             // Log.d("ID SCOREPICKER ", String.valueOf(idrider));
@@ -94,19 +97,26 @@ public class ScorePickerFragment extends Fragment {
         btnClose = vista.findViewById(R.id.btn_close);
         NumberPicker numberPicker = vista.findViewById(R.id.number_picker);
 
-        // Set background color
+        // Set colors
+        btnClose.setColor(colorScorepicker);
+        btnScore.setColor(colorScorepicker);
+        tvScore.setTextColor(colorScorepicker);
+        /*btnClose.setColor(getResources().getColor(R.color.darkgrey));
+        btnScore.setColor(getResources().getColor(R.color.darkgrey));*/
+        btnClose.setColorFilter(getResources().getColor(R.color.monokai_magentuosa));
+        btnScore.setColorFilter(getResources().getColor(R.color.monokai_green));
         frameScorepicker.setBackgroundColor(bakgroundScorepicker);
 
         // Set divider color
-        numberPicker.setDividerColor(ContextCompat.getColor(context, R.color.secondaryLightColor));
-        numberPicker.setDividerColorResource(R.color.secondaryLightColor);
+        numberPicker.setDividerColor(colorScorepicker);
+        //numberPicker.setDividerColorResource(R.color.secondaryLightColor);
 
         // Set formatter
         numberPicker.setFormatter(getString(R.string.number_picker_formatter));
         numberPicker.setFormatter(R.string.number_picker_formatter);
 
         // Set selected text color
-        //numberPicker.setSelectedTextColor(ContextCompat.getColor(context, android.R.color.white));
+        numberPicker.setSelectedTextColor(colorScorepicker);
         //numberPicker.setSelectedTextColorResource(android.R.color.white);
 
         // Set selected text size
@@ -114,7 +124,8 @@ public class ScorePickerFragment extends Fragment {
         //numberPicker.setSelectedTextSize(R.dimen.score_selected_text_size);
 
         // Set text color
-        //numberPicker.setTextColor(ContextCompat.getColor(context, R.color.colorAccent));
+        numberPicker.setTextColor(colorScorepicker);
+        //numberPicker.setTextColor(ContextCompat.getColor(context, R.color.monokai_magentuosa));
         //numberPicker.setTextColorResource(R.color.colorAccent);
 
         // Set text size
