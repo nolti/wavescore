@@ -44,12 +44,7 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 
 // 2 >> implemento la interfaz definida en la clase del MainActivity OnFragmentInteractionListener (si no funciona implementarla en el Fragment A)
-public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener,
-        ViewPagerInscriptosFragment.OnFragmentInteractionListener, ContainerFragment.OnFragmentInteractionListener, InscriptosFragment.OnFragmentInteractionListener,
-        OpenProFragment.OnFragmentInteractionListener, DKProFragment.OnFragmentInteractionListener, DamasFragment.OnFragmentInteractionListener,
-        M18Fragment.OnFragmentInteractionListener, M16Fragment.OnFragmentInteractionListener, M14Fragment.OnFragmentInteractionListener, M12Fragment.OnFragmentInteractionListener,
-        AmateursFragment.OnFragmentInteractionListener, MastersFragment.OnFragmentInteractionListener,
-        ScorePickerFragment.OnFragmentInteractionListener, ScorePickerComunicator, ResultsFragment.OnFragmentInteractionListener {
+public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener, ScorePickerComunicator{
 
     /* VARIABLES GLOBALES */
     String categoryName;
@@ -57,8 +52,13 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     String totalInscriptos;
     ListView listview;
     Button btnDownload; //Reemplazarlo por el del menu Navigator
+
     /* FRAGMENTS */
     Fragment inscriptosViewPager = new ViewPagerInscriptosFragment();
+
+    /* TABS */
+    Fragment openproFragment = new OpenProFragment();
+
     Fragment heatFragment = new HeatFragment();
     Fragment resultsFragment = new ResultsFragment();
     Fragment scorePickerFragment = new ScorePickerFragment();
@@ -89,6 +89,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     private ArrayList<Double> heatscores = new ArrayList<>();
     private String heatstatus;
 
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -112,6 +114,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 @Override
                 public void onResult(JSONObject object) {
                     procesarJson(object);
+                    Log.d("procesarJson", "ya fue procesado.");
                 }
             }).execute(fileInscriptos);
 
@@ -203,6 +206,11 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             bundle.putParcelableArrayList("masters", masters);
             bundle.putParcelableArrayList("sincategorias", sincategorias);
             inscriptosViewPager.setArguments(bundle);
+
+            /*Bundle bundleOpen = new Bundle();
+            bundleOpen.putParcelableArrayList("openpros", openpros);
+            openproFragment.setArguments(bundleOpen);*/
+
             fragmentmanager.beginTransaction().replace(R.id.maincontainer, inscriptosViewPager).addToBackStack(null).commit();
         } else if (id == R.id.nav_fixtures) {
             fragmentmanager.beginTransaction().replace(R.id.maincontainer, heatFragment).addToBackStack(null).commit();
@@ -219,31 +227,37 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     /* METODO PROCESAR JSON: Ponerlo en una clase  */
     private void procesarJson(JSONObject object) {
         try {
+            Log.d("TRY", "ACCEDIO");
             JSONArray rows = object.getJSONArray("rows");
             //Almaceno todos los incriptos en un JSONARRAy para luego categorizarlos
             /* Recorro las filas r*/
             for (int r = 0; r < rows.length(); ++r) {
                 JSONObject row = rows.getJSONObject(r);
                 JSONArray columns = row.getJSONArray("c");
+
                 /* Datos a usar del Spreedsheet */
                 int id = columns.getJSONObject(0).getInt("v");
                 int posicion = columns.getJSONObject(0).getInt("v");
                 String nombre = columns.getJSONObject(5).getString("v");
-                String localidad = columns.getJSONObject(9).getString("v");
+                //String localidad = columns.getJSONObject(9).getString("v");
+                String localidad = "Mardel";
                 String categoria = columns.getJSONObject(13).getString("v");
                 heatstatus = getString(R.string.status0);
-                Rider inscripto = new Rider(id, posicion, nombre, localidad, categoria, colors, wavestaken, sortwavestaken, heatscores, heatstatus); //corregir
+
+                Rider inscripto = new Rider(id, posicion, nombre, localidad, categoria, colors, wavestaken, sortwavestaken, heatscores, heatstatus);
                 inscriptos.add(inscripto);
             }
             // Creo el adaptador y referencio su maqueta
             RidersAdapter adaptadorInscriptos = new RidersAdapter(this, R.layout.view_list_item_rider, inscriptos);
             listview = findViewById(R.id.inscriptos_chekin);
+            Log.d("INSCRIPTOS INICIO", String.valueOf(inscriptos));
             listview.setAdapter(adaptadorInscriptos); // Coloco el adaptador en el listview
             adaptadorInscriptos.notifyDataSetChanged(); // Refresco el adaptador
             //Categorizo en sublistas
             categorizar(rows);
 
         } catch (JSONException e) {
+            Log.d("CATCH", "ACCEDIO");
             e.printStackTrace();
         }
     } // END procesarJson
@@ -361,17 +375,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         heatFragment.setArguments(bundleHeat);
         fragmentmanager.beginTransaction().replace(R.id.maincontainer, heatFragment).addToBackStack(null).commit();
         //getFragmentManager().popBackStack();
-    }
-
-    /*if (getArguments() != null) {
-            idrider = getArguments().getInt("idrider");
-            scorerider = getArguments().getInt("scorerider");
-        }*/
-
-    // metodo que se ejecuta a partir de la interfaz igualada en el fragmento comunicador A
-    @Override
-    public void onFragmentInteraction(int idrider) {
-
     }
 
 }

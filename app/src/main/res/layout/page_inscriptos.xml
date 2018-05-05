@@ -5,10 +5,8 @@
     android:layout_height="match_parent"
     android:background="@color/inactive"
     tools:context="com.voltiosx.nolti.wavescore.ui.fragments.ViewPagerInscriptosFragment">
-
     <ListView
         android:id="@+id/list_inscriptos"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
-
 </FrameLayout>

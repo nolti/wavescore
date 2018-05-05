@@ -26,8 +26,8 @@
     <color name="inactive">#2e2e2e</color>
 
     <!-- ALPHA 100% - FF 95% - F2 90% - E6 85% - D9 80% - CC 75% - BF-->
-    <color name="colorTextLight">#ffffff</color>
-    <color name="colorTextDark">#D9424242</color>
+    <color name="colorTextLight">#D9ffffff</color>
+    <color name="colorTextDark">#d9424242</color>
 
     <!--<color name="colorLycra1">#F92672</color>-->
     <!--<color name="colorLycra1">#ec407a</color>-->

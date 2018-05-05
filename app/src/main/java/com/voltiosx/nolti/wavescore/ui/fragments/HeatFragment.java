@@ -37,10 +37,6 @@ public class HeatFragment extends Fragment {
     private ArrayList<Double> scoredwaves = new ArrayList<>();
     private String statusridersheat;
 
-    // public ArrayList<ArrayList<Double>> matrixscores = new ArrayList<>();
-    // public ArrayList<Double> heatscores = new ArrayList<>();
-    // public ArrayList<Double> wavestakensort = new ArrayList<>();
-
     // 1A >> defino el Listener de la interfaz
     private ScorePickerComunicator scorepickercomunicator;
 
@@ -57,12 +53,12 @@ public class HeatFragment extends Fragment {
     private int TEXTCOLORrider;
     // --Commented out by Inspection (24/04/2018 11:20):public static int maxwaves = 10;
     private Double scorerider, totalscore;
-    // Fragment receptor de los resultados del Heat
 
     // Required empty public constructor
     public HeatFragment() {
 
     }
+
     /* 1C >> Metodo para comunicarse con el SCOREPICKER desde la MainActivity*/
     public void scorepicker(int idrider, int p){
         // ScorePickerComunicator
@@ -79,7 +75,6 @@ public class HeatFragment extends Fragment {
         ScorePickerFragment scorePickerFragment = new ScorePickerFragment();
         scorePickerFragment.setArguments(bundlescorepicker);
         Objects.requireNonNull(getFragmentManager()).beginTransaction().replace(R.id.maincontainer, scorePickerFragment).addToBackStack(null).commit();
-        //Log.d("SCOREPICKER ", "open");
     }
 
 // --Commented out by Inspection START (24/04/2018 11:34):
@@ -301,6 +296,7 @@ public class HeatFragment extends Fragment {
             }
         } // end if
     }
+
     // 2do metodo llamado -> Procedimiento mejores puntajes y sumatoria total
     private void averageScore(Rider averageRider, ArrayList<Double> averagedwaves){
         // ordenación descendente
@@ -660,7 +656,6 @@ public class HeatFragment extends Fragment {
 
     // 7mo metodo score needed to advance
     /*public void scoreNeededToAdvance(){
-
     }*/
 
     @Override
@@ -717,15 +712,13 @@ public class HeatFragment extends Fragment {
                     mensaje = getString(R.string.no_score_waves)+" "+getString(R.string.de)+" "+getString(R.string.lycra)+" "+colorlycra;
                     new MaterialDialog.Builder(contexto).content(mensaje).positiveText(R.string.agree).show();
                 }
-
-                // scorepicker(id, p);
             }
         });
         return vista;
     }
 
     // Al restaurarse se puntea --> scoring();
-   /* @Override
+    /* @Override
     public void onViewStateRestored(@Nullable Bundle savedInstanceState) {
         super.onViewStateRestored(savedInstanceState);
         if (getArguments() != null) {
@@ -767,6 +760,7 @@ public class HeatFragment extends Fragment {
 
     /* El Fragmento captura la implementación de la interfaz durante el método de ciclo de vida en el onAttach()
     e iguala su contexto y llama a los métodos de la Interfaz para comunicarse con la Actividad. */
+
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);

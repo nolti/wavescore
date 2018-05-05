@@ -3,8 +3,7 @@
 	xmlns:app="http://schemas.android.com/apk/res-auto"
 	xmlns:tools="http://schemas.android.com/tools"
 	android:layout_width="match_parent"
-	android:layout_height="72dp"
-	android:background="@color/inactive"
+	android:layout_height="wrap_content"
 	android:orientation="horizontal"
 	android:padding="0dp">
 
@@ -12,52 +11,49 @@
 		android:id="@+id/profile_image"
 		android:layout_width="40dp"
 		android:layout_height="40dp"
-		android:layout_marginBottom="16dp"
-		android:layout_marginStart="16dp"
-		android:layout_marginTop="16dp"
+		android:layout_margin="8dp"
 		android:backgroundTintMode="screen"
 		android:src="@drawable/iv_rider"
-		app:civ_circle_background_color="@color/inactive" />
+		app:civ_circle_background_color="@color/opaco30" />
 
 	<TextView
 		android:id="@+id/position"
-		android:layout_width="wrap_content"
+		android:layout_width="24dp"
 		android:layout_height="match_parent"
-		android:layout_weight="2"
-		android:background="@color/secondaryTextColor"
-		android:gravity="center_vertical|center_horizontal"
-		android:padding="16dp"
-		android:textColor="@color/monokai_fg3"
-		android:visibility="invisible"
-		tools:text="0" />
+		android:layout_weight="1"
+		android:gravity="center_vertical|center"
+		android:padding="8dp"
+		android:paddingStart="0dp"
+		android:text="@string/number_picker_0"
+		android:textColor="@color/light50" />
 
 	<TextView
-		android:id="@+id/nombre"
+		android:id="@+id/name"
 		android:layout_width="wrap_content"
 		android:layout_height="match_parent"
 		android:layout_gravity="center_horizontal"
-		android:layout_weight="5"
+		android:layout_weight="6"
 		android:ellipsize="end"
 		android:gravity="center_vertical|start"
 		android:maxLines="1"
-		android:padding="16dp"
-		android:paddingEnd="0dp"
-		android:paddingStart="16dp"
+		android:padding="8dp"
+		android:paddingStart="0dp"
 		android:textColor="@color/monokai_fg2"
 		android:textSize="14sp"
 		android:textStyle="normal"
 		tools:text=" rider" />
 
 	<TextView
-		android:id="@+id/categoria"
+		android:id="@+id/category"
 		android:layout_width="wrap_content"
 		android:layout_height="match_parent"
 		android:layout_gravity="end"
-		android:layout_weight="1"
+		android:layout_weight="2"
 		android:ellipsize="end"
-		android:gravity="center_vertical|center_horizontal|end"
+		android:gravity="center_vertical|end"
 		android:maxLines="1"
-		android:padding="16dp"
+		android:padding="8dp"
+		android:paddingStart="0dp"
 		android:textColor="@color/monokai_magentuosa"
 		android:textSize="12sp"
 		tools:text="categoria" />

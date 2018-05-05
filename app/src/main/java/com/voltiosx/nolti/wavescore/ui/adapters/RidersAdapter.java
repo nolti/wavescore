@@ -31,10 +31,12 @@ public class RidersAdapter extends ArrayAdapter<Rider> {
         }
         Rider o = riders.get(cont);
         if (o != null) {
-            //TextView pos = (TextView) v.findViewById(R.id.position);
-            TextView nom = (TextView) v.findViewById(R.id.nombre);
-            TextView cat = (TextView) v.findViewById(R.id.categoria);
-            //pos.setText(String.valueOf(o.getPosition()));
+            // references
+            TextView pos = v.findViewById(R.id.position);
+            TextView nom = v.findViewById(R.id.name);
+            TextView cat = v.findViewById(R.id.category);
+            // set values
+            pos.setText(String.valueOf(o.getPosition()));
             nom.setText(String.valueOf(o.getName()));
             cat.setText(String.valueOf(o.getCategoria()));
         }
