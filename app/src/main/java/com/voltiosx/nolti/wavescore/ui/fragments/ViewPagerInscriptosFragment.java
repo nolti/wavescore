@@ -158,18 +158,18 @@ public class ViewPagerInscriptosFragment extends Fragment {
     }
 
     public void llenarViewPager(ViewPager viewPager) {
-        InscriptosPagesAdapter adapter = new InscriptosPagesAdapter(getFragmentManager());
-        adapter.addFragment(inscriptosFragment, "Inscriptos");
-        adapter.addFragment(openProFragment, "Open Pro");
-        adapter.addFragment(damasFragment, "Damas Pro");
-        adapter.addFragment(dkProFragment, "DK Pro");
-        adapter.addFragment(amateursFragment, "Amateurs");
-        adapter.addFragment(mastersFragment, "Masters");
-        adapter.addFragment(m18Fragment, "Menores de 18");
-        adapter.addFragment(m16Fragment, "Menores de 16");
-        adapter.addFragment(m14Fragment, "Menores de 14");
-        adapter.addFragment(m12Fragment, "Menores de 12");
-        viewPager.setAdapter(adapter); //agrega al viewPager las paginas
+        InscriptosPagesAdapter adapterTabs = new InscriptosPagesAdapter(getFragmentManager());
+        adapterTabs.addFragment(inscriptosFragment, "Inscriptos");
+        adapterTabs.addFragment(openProFragment, "Open Pro");
+        adapterTabs.addFragment(damasFragment, "Damas Pro");
+        adapterTabs.addFragment(dkProFragment, "DK Pro");
+        adapterTabs.addFragment(amateursFragment, "Amateurs");
+        adapterTabs.addFragment(mastersFragment, "Masters");
+        adapterTabs.addFragment(m18Fragment, "Menores de 18");
+        adapterTabs.addFragment(m16Fragment, "Menores de 16");
+        adapterTabs.addFragment(m14Fragment, "Menores de 14");
+        adapterTabs.addFragment(m12Fragment, "Menores de 12");
+        viewPager.setAdapter(adapterTabs); //agrega al viewPager los TABS
     }
 
     @Override

@@ -26,7 +26,7 @@
     <color name="inactive">#2e2e2e</color>
 
     <!-- ALPHA 100% - FF 95% - F2 90% - E6 85% - D9 80% - CC 75% - BF-->
-    <color name="colorTextLight">#D9ffffff</color>
+    <color name="colorTextLight">#d9ffffff</color>
     <color name="colorTextDark">#d9424242</color>
 
     <!--<color name="colorLycra1">#F92672</color>-->
@@ -57,10 +57,11 @@
     <color name="monokai_emerald">#78dde8</color>
     <color name="monokai_violet">#AE81FF</color>
     <color name="monokai_lila">#aa9cf2</color>
+    <color name="monokai_pink">#F2777A</color>
     <color name="monokai_magenta">#FD5FF0</color>
     <color name="monokai_magentuosa">#ff6188</color>
     <color name="monokai_red">#f92672</color>
-    <color name="monokai_ornge">#FD971F</color>
+    <color name="monokai_ornge">#D27B53</color>
     <color name="monokai_yellow">#E6DB74</color>
     <color name="monokai_green">#3cda7b</color>
     <!--<color name="monokai_green">#A6E22E</color>-->

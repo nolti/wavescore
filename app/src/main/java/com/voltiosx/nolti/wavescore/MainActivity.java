@@ -25,6 +25,7 @@ import com.voltiosx.nolti.wavescore.models.Wave;
 import com.voltiosx.nolti.wavescore.ui.adapters.RidersAdapter;
 import com.voltiosx.nolti.wavescore.ui.fragments.AmateursFragment;
 import com.voltiosx.nolti.wavescore.ui.fragments.ContainerFragment;
+import com.voltiosx.nolti.wavescore.ui.fragments.CountDawnFragment;
 import com.voltiosx.nolti.wavescore.ui.fragments.DKProFragment;
 import com.voltiosx.nolti.wavescore.ui.fragments.DamasFragment;
 import com.voltiosx.nolti.wavescore.ui.fragments.HeatFragment;
@@ -88,8 +89,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     private ArrayList<Double> sortwavestaken = new ArrayList<>();
     private ArrayList<Double> heatscores = new ArrayList<>();
     private String heatstatus;
-
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -247,14 +246,20 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 Rider inscripto = new Rider(id, posicion, nombre, localidad, categoria, colors, wavestaken, sortwavestaken, heatscores, heatstatus);
                 inscriptos.add(inscripto);
             }
-            // Creo el adaptador y referencio su maqueta
-            RidersAdapter adaptadorInscriptos = new RidersAdapter(this, R.layout.view_list_item_rider, inscriptos);
+
+            // Listado de inscriptos
+            /*RidersAdapter adaptadorInscriptos = new RidersAdapter(this, R.layout.view_list_item_rider, inscriptos);
             listview = findViewById(R.id.inscriptos_chekin);
             Log.d("INSCRIPTOS INICIO", String.valueOf(inscriptos));
-            listview.setAdapter(adaptadorInscriptos); // Coloco el adaptador en el listview
-            adaptadorInscriptos.notifyDataSetChanged(); // Refresco el adaptador
+            listview.setAdapter(adaptadorInscriptos);
+            adaptadorInscriptos.notifyDataSetChanged();*/
+
             //Categorizo en sublistas
             categorizar(rows);
+
+            // Abro countdawnFragment
+            Fragment countdawnFragment = new CountDawnFragment();
+            fragmentmanager.beginTransaction().replace(R.id.maincontainer, countdawnFragment).addToBackStack(null).commit();
 
         } catch (JSONException e) {
             Log.d("CATCH", "ACCEDIO");
@@ -288,7 +293,13 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 ArrayList<Double> sw = sortwavestaken;
                 ArrayList<Integer> colores = colors;
                 ArrayList<Double> hs = heatscores;
+
+                // Inicia Status
                 String s = heatstatus;
+                // Inicia Colores
+                /*int textLight = getResources().getColor(R.color.colorTextLight);
+                int textDark = getResources().getColor(R.color.colorTextDark);*/
+
                 switch(categoria) {
                     case "OPEN PRO":
                         Rider openpro = new Rider(id, p, n, l, c, colores, w, sw, hs, s);

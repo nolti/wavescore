@@ -1,11 +1,10 @@
 package com.voltiosx.nolti.wavescore.ui.fragments;
+
 import android.content.Context;
-import android.nfc.Tag;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -13,22 +12,15 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-
 import com.afollestad.materialdialogs.MaterialDialog;
 import com.voltiosx.nolti.wavescore.R;
 import com.voltiosx.nolti.wavescore.io.ScorePickerComunicator;
-import com.voltiosx.nolti.wavescore.models.ColorWaveScore;
 import com.voltiosx.nolti.wavescore.models.Rider;
-import com.voltiosx.nolti.wavescore.models.Wave;
 import com.voltiosx.nolti.wavescore.ui.adapters.HeatAdapter;
-import java.math.BigDecimal;
-import java.math.RoundingMode;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
-import java.util.Iterator;
 import java.util.Objects;
-import java.util.Random;
 
 public class HeatFragment extends Fragment {
 
