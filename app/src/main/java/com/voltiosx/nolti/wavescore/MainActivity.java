@@ -4,6 +4,8 @@ import android.content.Context;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
+import android.support.design.widget.FloatingActionButton;
+import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
 import android.util.Log;
 import android.support.design.widget.NavigationView;
@@ -14,6 +16,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ListView;
 import com.voltiosx.nolti.wavescore.io.AsyncResult;
@@ -135,6 +139,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             toggle.syncState();
             NavigationView navigationView = findViewById(R.id.nav_view);
             navigationView.setNavigationItemSelectedListener(this);
+
         } else {
             Log.d("NO SE ACCEDIO: ", "Ejecutar acciones desconectado.");
         }
@@ -189,7 +194,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     public boolean onNavigationItemSelected(MenuItem item) {
         // Handle navigation view item clicks here.
         int id = item.getItemId();
+        String menuselect = null;
         if (id == R.id.nav_inscriptos) {
+
             Log.d("ENVIO PARCELABLE: ", String.valueOf(inscriptos));
             /* TRANSPORTO LOS DATOS DE LOS INSCRIPTOS */
             Bundle bundle = new Bundle();
@@ -205,21 +212,27 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             bundle.putParcelableArrayList("masters", masters);
             bundle.putParcelableArrayList("sincategorias", sincategorias);
             inscriptosViewPager.setArguments(bundle);
-
             /*Bundle bundleOpen = new Bundle();
             bundleOpen.putParcelableArrayList("openpros", openpros);
             openproFragment.setArguments(bundleOpen);*/
-
+            menuselect = getString(R.string.inscriptos);
             fragmentmanager.beginTransaction().replace(R.id.maincontainer, inscriptosViewPager).addToBackStack(null).commit();
         } else if (id == R.id.nav_fixtures) {
+            menuselect = getString(R.string.fixtures);
             fragmentmanager.beginTransaction().replace(R.id.maincontainer, heatFragment).addToBackStack(null).commit();
         } else if (id == R.id.nav_puntuaciones) {
+            menuselect = getString(R.string.puntuaciones);
             fragmentmanager.beginTransaction().replace(R.id.maincontainer, scorePickerFragment).addToBackStack(null).commit();
         } else if (id == R.id.nav_resultados) {
+            menuselect = getString(R.string.resultados);
             fragmentmanager.beginTransaction().replace(R.id.maincontainer, resultsFragment).addToBackStack(null).commit();
+        } else if (id == R.id.nav_rankings) {
+            menuselect = getString(R.string.rankings);
         }
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
+        // Cambio de nombre
+        getSupportActionBar().setTitle(menuselect);
         return true;
     }
 
@@ -258,8 +271,11 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             categorizar(rows);
 
             // Abro countdawnFragment
-            Fragment countdawnFragment = new CountDawnFragment();
-            fragmentmanager.beginTransaction().replace(R.id.maincontainer, countdawnFragment).addToBackStack(null).commit();
+            /*Fragment countdawnFragment = new CountDawnFragment();
+            fragmentmanager.beginTransaction().replace(R.id.maincontainer, countdawnFragment).addToBackStack(null).commit();*/
+
+            // abre heatFragment
+            fragmentmanager.beginTransaction().replace(R.id.maincontainer, heatFragment).addToBackStack(null).commit();
 
         } catch (JSONException e) {
             Log.d("CATCH", "ACCEDIO");

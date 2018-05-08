@@ -7,24 +7,24 @@
         <item
             android:id="@+id/nav_inscriptos"
             android:icon="@drawable/ic_inscriptos"
-            android:title="Inscriptos" />
+            android:title="@string/inscriptos" />
 
         <item
             android:id="@+id/nav_fixtures"
             android:icon="@drawable/ic_fixture"
-            android:title="Fixtures" />
+            android:title="@string/fixtures" />
         <item
             android:id="@+id/nav_puntuaciones"
             android:icon="@drawable/ic_puntuaciones"
-            android:title="Puntuaciones" />
+            android:title="@string/puntuaciones" />
         <item
             android:id="@+id/nav_resultados"
             android:icon="@drawable/ic_resultados"
-            android:title="Resultados" />
+            android:title="@string/resultados" />
         <item
             android:id="@+id/nav_rankings"
             android:icon="@drawable/ic_ranking"
-            android:title="Rankings" />
+            android:title="@string/rankings" />
     </group>
 
 </menu>

@@ -60,17 +60,13 @@ public class CountDawnFragment extends Fragment {
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_count_dawn, container, false);
-
-        CountdownView mCvCountdownView = view.findViewById(R.id.countdown);
+        /*CountdownView mCvCountdownView = view.findViewById(R.id.countdown);
         mCvCountdownView.start(995550000); // Millisecond
-
         CountdownView cvCountdownView = view.findViewById(R.id.cv_countdown);
-        cvCountdownView.start(1800000); // Millisecond
-
+        cvCountdownView.start(1800000); // Millisecond*/
         return view;
 
     }

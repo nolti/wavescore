@@ -4,16 +4,16 @@
     <item android:state_pressed="true">
         <shape android:shape="rectangle">
             <corners android:radius="3dp" />
-            <solid android:color="#ffff8f2f" />
-            <stroke android:color="#000000" android:width="0.5dp" />
+            <solid android:color="@color/monokai_bg1"/>
+            <!--<stroke android:color="#000000" android:width="0.5dp" />-->
         </shape>
     </item>
 
     <item>
         <shape android:shape="rectangle">
             <corners android:radius="3dp" />
-            <solid android:color="#ffffb62f" />
-            <stroke android:color="#000000" android:width="0.5dp" />
+            <solid android:color="@color/monokai_bg0"/>
+            <!--<stroke android:color="#000000" android:width="0.5dp" />-->
         </shape>
     </item>
 </selector>

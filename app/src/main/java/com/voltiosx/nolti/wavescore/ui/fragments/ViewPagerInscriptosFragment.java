@@ -90,14 +90,17 @@ public class ViewPagerInscriptosFragment extends Fragment {
             // Si aun no se creo el appBar, lo creo
             if (appBar == null) {
                 appBar = parent.findViewById(R.id.appbar);
+
+                /* TABS */
                 tabs = new TabLayout((getActivity()));
                 tabs.setTabGravity(TabLayout.GRAVITY_FILL);
                 tabs.setTabMode(TabLayout.MODE_SCROLLABLE);
                 tabs.setTabTextColors(Color.WHITE, Color.WHITE);
                 appBar.addView(tabs);
+
                 viewPager = vista.findViewById(R.id.idViewpagerInscriptos);
 
-                /* Agregar las paginas (frames) al ViewPager */
+                /* FRAGMENT PAGES */
                 llenarViewPager(viewPager);
                 //Luego de llenar el viewPager el evento de arrastrar en la pantalla
                 viewPager.addOnPageChangeListener(new ViewPager.SimpleOnPageChangeListener() {

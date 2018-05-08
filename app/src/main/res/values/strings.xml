@@ -1,6 +1,13 @@
 <resources>
     <string name="app_name">WaveScore</string>
 
+    <!-- Menu -->
+    <string name="inscriptos">Inscriptos</string>
+    <string name="fixtures">Fixtures</string>
+    <string name="puntuaciones">Puntuaciones</string>
+    <string name="resultados">Resultados</string>
+    <string name="rankings">Rankings</string>
+
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
     <string name="action_settings">Settings</string>
@@ -52,7 +59,5 @@
     <string name="status9">Desempató por</string>
     <string name="status10">en la ola promediada nº</string>
     <string name="status11">en todas las olas promediadas</string>
-
-    <string name="resultados">Resultados</string>
 
 </resources>

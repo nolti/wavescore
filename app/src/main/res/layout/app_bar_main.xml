@@ -11,22 +11,38 @@
         android:id="@+id/appbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_margin="0dp"
         android:background="@color/primaryColor"
-        android:fitsSystemWindows="false"><!--android:theme="@style/AppTheme.AppBarOverlay"-->
+        android:fitsSystemWindows="false"
+        android:theme="@style/AppTheme.AppBarOverlay"
+        android:padding="0dp">
 
         <android.support.v7.widget.Toolbar xmlns:android="http://schemas.android.com/apk/res/android"
             xmlns:app="http://schemas.android.com/apk/res-auto"
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textAlignment="center"
-            app:contentInsetEnd="0dp"
-            app:contentInsetLeft="0dp"
-            app:contentInsetRight="0dp"
-            app:contentInsetStart="0dp"
+            android:addStatesFromChildren="false"
             app:title="@string/app_name"
-            app:titleMargin="@dimen/activity_horizontal_margin"
-            app:titleTextColor="@android:color/white"/>
+            app:titleMargins="0dp"
+            app:titleTextColor="@color/colorAccent">
+
+            <cn.iwgang.countdownview.CountdownView
+                android:id="@+id/heatCountdown"
+                android:layout_width="86dp"
+                android:layout_height="28dp"
+                android:layout_gravity="right"
+                android:background="@drawable/bg_countdown"
+                app:isShowMillisecond="true"
+                app:isShowMinute="true"
+                app:isShowSecond="true"
+                app:suffixGravity="center"
+                app:suffixTextColor="@color/monokai_fg2"
+                app:suffixTextSize="15sp"
+                app:timeTextColor="@color/monokai_fg2"
+                app:timeTextSize="15sp" />
+
+        </android.support.v7.widget.Toolbar>
 
     </android.support.design.widget.AppBarLayout>
 

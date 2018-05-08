@@ -25,8 +25,7 @@
         app:timeTextColor="#000000"
         app:timeTextSize="15sp" />
 
-
-    <cn.iwgang.countdownview.CountdownView
+    <!--<cn.iwgang.countdownview.CountdownView
         android:id="@+id/countdown"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -51,6 +50,6 @@
         app:timeBgRadius="3dp"
         app:timeBgSize="24dp"
         app:timeTextColor="@color/colorTextLight"
-        app:timeTextSize="22sp" />
+        app:timeTextSize="22sp" />-->
 
 </FrameLayout>

@@ -21,6 +21,8 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.Objects;
+import cn.iwgang.countdownview.CountdownView;
+import cn.iwgang.countdownview.DynamicConfig;
 
 public class HeatFragment extends Fragment {
 
@@ -28,11 +30,21 @@ public class HeatFragment extends Fragment {
     private final ArrayList<Rider> ridersheat = new ArrayList<>();
     private ArrayList<Double> scoredwaves = new ArrayList<>();
     private String statusridersheat;
+    private int timeStandby;
+    private int timeOver;
+    private int timeEnough;
+    private int timeShort;
+    private Boolean startcountdown = false;
+    private Boolean restartcountdown = false;
+    private Boolean longclick = false;
 
     // 1A >> defino el Listener de la interfaz
     private ScorePickerComunicator scorepickercomunicator;
 
     // Declaro las Vistas Globales
+    //private int timeheat = 1800000; // 30 min
+    private int timeheat = 20000; // 20 seg
+    private int timeshort = 10000; // 10 seg
     private View vista;
     private RecyclerView recycler;
     private HeatAdapter heatAdapter;
@@ -159,6 +171,11 @@ public class HeatFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         contexto = getActivity();
+
+        timeStandby = getResources().getColor(R.color.monokai_blue);
+        timeOver = getResources().getColor(R.color.monokai_pink);
+        timeEnough = getResources().getColor(R.color.monokai_green);
+        timeShort = getResources().getColor(R.color.monokai_yellow);
 
         // inicializo colores lycras
         int colorTextLight, colorTextDark;
@@ -650,8 +667,17 @@ public class HeatFragment extends Fragment {
     /*public void scoreNeededToAdvance(){
     }*/
 
+    private DynamicConfig.Builder changecolorcountdown(int textcolor) {
+        DynamicConfig.Builder countdownconfig = new DynamicConfig.Builder();
+        countdownconfig
+                .setTimeTextColor(textcolor)
+                .setSuffixTextColor(textcolor);
+        return countdownconfig;
+    }
+
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+
         // Inflate the layout for this fragment
         vista = inflater.inflate(R.layout.fragment_heat, container, false);
         recycler = vista.findViewById(R.id.recycler_cards_heat);
@@ -660,6 +686,79 @@ public class HeatFragment extends Fragment {
         heatAdapter = new HeatAdapter(ridersheat);
         recycler.setAdapter(heatAdapter);
         heatAdapter.notifyDataSetChanged(); // Refresco el adaptador
+
+        /* CRONOMETRO */
+        View parent = (View) container.getParent();
+        final CountdownView heatCountdown = parent.findViewById(R.id.heatCountdown);
+        heatCountdown.updateShow(timeheat);
+
+        // Estado inicial
+        heatCountdown.dynamicShow(changecolorcountdown(timeStandby).build());
+
+        heatCountdown.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (!longclick) {
+                    if (!startcountdown) {
+                        if (!restartcountdown) {
+                            heatCountdown.start(timeheat);
+                            restartcountdown = true;
+                        } else {
+                            heatCountdown.restart();
+                        }
+                        startcountdown = true;
+                        heatCountdown.dynamicShow(changecolorcountdown(timeEnough).build());
+                    } else {
+                        startcountdown = false;
+                        heatCountdown.pause();
+                    }
+                }
+                longclick = false;
+            }
+        });
+        heatCountdown.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View v) {
+                heatCountdown.stop();
+                heatCountdown.updateShow(timeheat);
+                heatCountdown.dynamicShow(changecolorcountdown(timeStandby).build());
+                restartcountdown=false;
+                startcountdown = false;
+                longclick = true;
+                return false;
+            }
+        });
+        heatCountdown.setOnCountdownEndListener(new CountdownView.OnCountdownEndListener() {
+            @Override
+            public void onEnd(CountdownView cv) {
+                heatCountdown.dynamicShow(changecolorcountdown(timeOver).build());
+                sendHeatResults();
+            }
+        });
+
+        heatCountdown.setOnCountdownIntervalListener(timeshort, new CountdownView.OnCountdownIntervalListener() {
+            @Override
+            public void onInterval(CountdownView cv, long remainTime) {
+                heatCountdown.dynamicShow(changecolorcountdown(timeShort).build());
+            }
+        });
+
+        //heatCountdown.setOnCountdownIntervalListener(long interval, OnCountdownIntervalListener onCountdownIntervalListener);
+
+        /*public void setOnCountdownIntervalListener(long interval, OnCountdownIntervalListener onCountdownIntervalListener) {
+            mInterval = interval;
+            mOnCountdownIntervalListener = onCountdownIntervalListener;
+        }*/
+
+        //setOnCountdownIntervalListener(long interval, OnCountdownIntervalListener onCountdownIntervalListener);
+
+        /*heatButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
+                        .setAction("Action", null).show();
+            }
+        });*/
 
         /* BOTON RESULTADOS */
         btnResults = vista.findViewById(R.id.btn_results);
@@ -706,6 +805,16 @@ public class HeatFragment extends Fragment {
                 }
             }
         });
+
+        //CountdownView heatCountdown = vista.findViewById(R.id.heatCountdown);
+        /*if (appBar == null) {
+            appBar = parent.findViewById(R.id.appbar);
+            tabs = new TabLayout((getActivity()));
+            tabs.setTabGravity(TabLayout.GRAVITY_FILL);
+            tabs.setTabMode(TabLayout.MODE_SCROLLABLE);
+            tabs.setTabTextColors(Color.WHITE, Color.WHITE);
+            appBar.addView(tabs);*/
+
         return vista;
     }
 

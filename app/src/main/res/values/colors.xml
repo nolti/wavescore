@@ -11,9 +11,11 @@
     <color name="darkgrey">#95000000</color>
     <!--<color name="primaryColor">#272822</color>-->
     <!--<color name="primaryColor">#2c292e</color>-->
-    <color name="primaryColor">#282A36</color>
+    <!--<color name="primaryColor">#282A36</color>-->
+    <color name="primaryColor">#1E1E1E</color>
     <color name="primaryDarkColor">#191919</color>
-    <color name="colorAccent">#3ca4dc</color>
+    <!--<color name="colorAccent">#3ca4dc</color>-->
+    <color name="colorAccent">#6699CC</color>
     <color name="primaryLightColor">#25334b</color>
     <color name="secondaryColor">#3b2e71</color>
     <color name="terciaryColor">#444167</color>
@@ -50,9 +52,9 @@
     <color name="monokai_bg3">#FFFFFF</color>
     <color name="monokai_fg0">#f8f8f2</color>
     <color name="monokai_fg1">#cfcfc2</color>
-    <color name="monokai_fg2">#ffffff</color>
+    <color name="monokai_fg2">#807E7A</color>
     <color name="monokai_fg3">#676761</color>
-    <color name="monokai_blue">#66D9EF</color>
+    <color name="monokai_blue">#66d9ef</color>
     <color name="monokai_cyan">#A1EFE4</color>
     <color name="monokai_emerald">#78dde8</color>
     <color name="monokai_violet">#AE81FF</color>
@@ -63,7 +65,7 @@
     <color name="monokai_red">#f92672</color>
     <color name="monokai_ornge">#D27B53</color>
     <color name="monokai_yellow">#E6DB74</color>
+    <color name="monokai_yellow2">#FECC66</color>
     <color name="monokai_green">#3cda7b</color>
     <!--<color name="monokai_green">#A6E22E</color>-->
-
 </resources>
