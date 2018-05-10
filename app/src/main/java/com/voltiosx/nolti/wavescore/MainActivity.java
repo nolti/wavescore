@@ -4,8 +4,6 @@ import android.content.Context;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
 import android.util.Log;
 import android.support.design.widget.NavigationView;
@@ -16,29 +14,15 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
-import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ListView;
+
 import com.voltiosx.nolti.wavescore.io.AsyncResult;
 import com.voltiosx.nolti.wavescore.io.DownloadGsonSpreadsheetGoogle;
 import com.voltiosx.nolti.wavescore.io.ScorePickerComunicator;
-import com.voltiosx.nolti.wavescore.models.ColorWaveScore;
 import com.voltiosx.nolti.wavescore.models.Rider;
-import com.voltiosx.nolti.wavescore.models.Wave;
-import com.voltiosx.nolti.wavescore.ui.adapters.RidersAdapter;
-import com.voltiosx.nolti.wavescore.ui.fragments.AmateursFragment;
-import com.voltiosx.nolti.wavescore.ui.fragments.ContainerFragment;
-import com.voltiosx.nolti.wavescore.ui.fragments.CountDawnFragment;
-import com.voltiosx.nolti.wavescore.ui.fragments.DKProFragment;
-import com.voltiosx.nolti.wavescore.ui.fragments.DamasFragment;
+import com.voltiosx.nolti.wavescore.ui.fragments.FixtureFragment;
 import com.voltiosx.nolti.wavescore.ui.fragments.HeatFragment;
-import com.voltiosx.nolti.wavescore.ui.fragments.InscriptosFragment;
-import com.voltiosx.nolti.wavescore.ui.fragments.M12Fragment;
-import com.voltiosx.nolti.wavescore.ui.fragments.M14Fragment;
-import com.voltiosx.nolti.wavescore.ui.fragments.M16Fragment;
-import com.voltiosx.nolti.wavescore.ui.fragments.M18Fragment;
-import com.voltiosx.nolti.wavescore.ui.fragments.MastersFragment;
 import com.voltiosx.nolti.wavescore.ui.fragments.ResultsFragment;
 import com.voltiosx.nolti.wavescore.ui.fragments.ScorePickerFragment;
 import com.voltiosx.nolti.wavescore.ui.fragments.ViewPagerInscriptosFragment;
@@ -60,14 +44,11 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
     /* FRAGMENTS */
     Fragment inscriptosViewPager = new ViewPagerInscriptosFragment();
-
-    /* TABS */
-    Fragment openproFragment = new OpenProFragment();
-
     Fragment heatFragment = new HeatFragment();
     Fragment resultsFragment = new ResultsFragment();
-    Fragment scorePickerFragment = new ScorePickerFragment();
+    Fragment fixtureFragment = new FixtureFragment();
     android.support.v4.app.FragmentManager fragmentmanager = getSupportFragmentManager();
+
     /* VARIABLES GLOBALES SCORING */
     int idrider;
     int p;
@@ -196,7 +177,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         int id = item.getItemId();
         String menuselect = null;
         if (id == R.id.nav_inscriptos) {
-
             Log.d("ENVIO PARCELABLE: ", String.valueOf(inscriptos));
             /* TRANSPORTO LOS DATOS DE LOS INSCRIPTOS */
             Bundle bundle = new Bundle();
@@ -219,10 +199,12 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             fragmentmanager.beginTransaction().replace(R.id.maincontainer, inscriptosViewPager).addToBackStack(null).commit();
         } else if (id == R.id.nav_fixtures) {
             menuselect = getString(R.string.fixtures);
-            fragmentmanager.beginTransaction().replace(R.id.maincontainer, heatFragment).addToBackStack(null).commit();
+            // Genero fixture para Open Pro unicamente por ahora...
+            sendtofixture(openpros);
+            //fragmentmanager.beginTransaction().replace(R.id.maincontainer, fixtureFragment).addToBackStack(null).commit();
         } else if (id == R.id.nav_puntuaciones) {
             menuselect = getString(R.string.puntuaciones);
-            fragmentmanager.beginTransaction().replace(R.id.maincontainer, scorePickerFragment).addToBackStack(null).commit();
+            fragmentmanager.beginTransaction().replace(R.id.maincontainer, heatFragment).addToBackStack(null).commit();
         } else if (id == R.id.nav_resultados) {
             menuselect = getString(R.string.resultados);
             fragmentmanager.beginTransaction().replace(R.id.maincontainer, resultsFragment).addToBackStack(null).commit();
@@ -267,15 +249,23 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             listview.setAdapter(adaptadorInscriptos);
             adaptadorInscriptos.notifyDataSetChanged();*/
 
-            //Categorizo en sublistas
+            // Categorizo en sublistas
             categorizar(rows);
+
+            /*Gson gson = new Gson();
+            String fixtureJson = gson.toJson(openpros);
+            categoryName = openpros.get(0).getCategoria();
+            Intent fixIntent = new Intent(MainActivity.this, FixtureActivity.class);
+            fixIntent.putExtra("categoria",categoryName);
+            fixIntent.putExtra("fixGson", fixtureJson);
+            startActivity(fixIntent);*/
 
             // Abro countdawnFragment
             /*Fragment countdawnFragment = new CountDawnFragment();
             fragmentmanager.beginTransaction().replace(R.id.maincontainer, countdawnFragment).addToBackStack(null).commit();*/
 
             // abre heatFragment
-            fragmentmanager.beginTransaction().replace(R.id.maincontainer, heatFragment).addToBackStack(null).commit();
+            //fragmentmanager.beginTransaction().replace(R.id.maincontainer, heatFragment).addToBackStack(null).commit();
 
         } catch (JSONException e) {
             Log.d("CATCH", "ACCEDIO");
@@ -367,6 +357,15 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             e.printStackTrace();
         }
     } // END ctegorizar
+
+    /* metodo BUNDLE envia los resultados a ResultFragment */
+    private void sendtofixture(ArrayList<Rider> categorytofixture){
+        Bundle fixturebundle = new Bundle();
+        fixturebundle.putParcelableArrayList("fixturelist", categorytofixture);
+        Fragment fixtureFragment = new FixtureFragment();
+        fixtureFragment.setArguments(fixturebundle);
+        fragmentmanager.beginTransaction().replace(R.id.maincontainer, fixtureFragment).addToBackStack(null).commit();
+    }
 
     // siempre sobreescribir el metodo de la interfaz en la MainActivity
     // este no sirve (solo sirve onScoreSelected)

@@ -8,20 +8,17 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TableLayout;
 import android.widget.TextView;
-
 import com.voltiosx.nolti.wavescore.R;
 import com.voltiosx.nolti.wavescore.models.InstanceItem;
 import com.voltiosx.nolti.wavescore.models.ListItem;
 import com.voltiosx.nolti.wavescore.models.ResultItem;
-
 import java.util.List;
 
 public class ResultsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
-    // :: 1A :: Declaro el titulo para INSTANCE HEAT hl_instance_heat
+    // :: 1A :: Declaro el titulo para INSTANCE HEAT hl_number_heat
 	private static class InstanceViewHolder extends RecyclerView.ViewHolder {
 
-		//TextView txt_header;
         TextView hl_instance_heat;
 
 		InstanceViewHolder(View itemView) {

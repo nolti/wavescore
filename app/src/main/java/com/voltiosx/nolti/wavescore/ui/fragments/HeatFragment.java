@@ -2,6 +2,7 @@ package com.voltiosx.nolti.wavescore.ui.fragments;
 
 import android.content.Context;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -12,7 +13,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.Toast;
+
 import com.afollestad.materialdialogs.MaterialDialog;
+import com.voltiosx.nolti.wavescore.MainActivity;
 import com.voltiosx.nolti.wavescore.R;
 import com.voltiosx.nolti.wavescore.io.ScorePickerComunicator;
 import com.voltiosx.nolti.wavescore.models.Rider;
@@ -37,6 +41,7 @@ public class HeatFragment extends Fragment {
     private Boolean startcountdown = false;
     private Boolean restartcountdown = false;
     private Boolean longclick = false;
+    private int clicks = 0;
 
     // 1A >> defino el Listener de la interfaz
     private ScorePickerComunicator scorepickercomunicator;
@@ -698,21 +703,34 @@ public class HeatFragment extends Fragment {
         heatCountdown.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (!longclick) {
-                    if (!startcountdown) {
-                        if (!restartcountdown) {
-                            heatCountdown.start(timeheat);
-                            restartcountdown = true;
-                        } else {
-                            heatCountdown.restart();
+                clicks++;
+
+                Handler handler = new Handler();
+                handler.postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        if (clicks==1) {
+                            if (!longclick) {
+                                if (!startcountdown) {
+                                    if (!restartcountdown) {
+                                        heatCountdown.start(timeheat);
+                                        restartcountdown = true;
+                                    } else {
+                                        heatCountdown.restart();
+                                    }
+                                    startcountdown = true;
+                                    heatCountdown.dynamicShow(changecolorcountdown(timeEnough).build());
+                                } else {
+                                    startcountdown = false;
+                                    heatCountdown.pause();
+                                }
+                            }
+                        } else if (clicks==2) {
+                            new MaterialDialog.Builder(contexto).content("Proximamente se podra editar aqui el tiempo de este CRONOMETRO").positiveText(R.string.agree).show();
                         }
-                        startcountdown = true;
-                        heatCountdown.dynamicShow(changecolorcountdown(timeEnough).build());
-                    } else {
-                        startcountdown = false;
-                        heatCountdown.pause();
+                        clicks=0;
                     }
-                }
+                }, 400);
                 longclick = false;
             }
         });
