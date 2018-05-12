@@ -6,6 +6,7 @@ import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -30,6 +31,7 @@ public class FixtureFragment extends Fragment {
     private List<FixtureItem> fixtureitems = new ArrayList<>();
     private Fixture fixture = new Fixture();
     private int heatgroup;
+    private int restoriders;
 
     public FixtureFragment() {
         // Required empty public constructor
@@ -38,7 +40,6 @@ public class FixtureFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        // Recibe argumentos
         if (getArguments() != null) {
             fixturelist = getArguments().getParcelableArrayList(KEY);
         }
@@ -49,8 +50,12 @@ public class FixtureFragment extends Fragment {
         View v = inflater.inflate(R.layout.fragment_fixture, container, false);
         Context context = v.getContext();
         totalridersfixture = fixturelist.size();
-        heatgroup = fixture.heatGroupQuery(totalridersfixture);
+        heatgroup = heatGroupQuery(totalridersfixture);
+        restoriders = totalridersfixture%heatgroup;
+        Log.d("RIDERS",restoriders+" quedan afuera");
         totalheats = (int) Math.ceil(totalridersfixture/heatgroup);
+        if (restoriders!=0) { totalheats++; }
+        Log.d("Math.ceil",totalridersfixture+"/"+heatgroup+" = "+totalheats+" heat/s");
 
         // FORMATEO LA INSTANCIA
         int r=0;
@@ -81,17 +86,79 @@ public class FixtureFragment extends Fragment {
             } //for al siguiente rider a asignar al heat
 
         } // for al siguiente encabezado
+
         // Set the adapter to RECYCLER
         RecyclerView recyclerfixture = v.findViewById(R.id.recycler_fixture);
         recyclerfixture.setLayoutManager(new LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false));
         recyclerfixture.setAdapter(new FixtureAdapter(fixtureitems));
 
-
-        /*RecyclerView recycler = vista.findViewById(R.id.recycler_results_heat);
-        recycler.setLayoutManager(new LinearLayoutManager(contexto, LinearLayoutManager.VERTICAL, false));
-        recycler.setAdapter(new ResultsAdapter(items));*/
-
         return v;
+    }
+
+    // Metodo que devuelve el numero con el que se debe agrupar los Heats del Fixture
+    public int heatGroupQuery(int n) {
+        if (n>1){
+            //entro el 2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17 infinito
+            if (n%2==0) {
+                //es par
+                if (n!=2) {
+                    //entro el 4,6,8,10,12,14,16,50,54,62
+                    if (n%4==0) {
+                        //entro el 4,8,12,16
+                        return 4;
+                    } else if (n%3==0) {
+                        //entro el 6,10,14,54,62
+                        return 3;
+                    } else if (n%5==0) { //entro el 10,14
+                        return 5;
+                    } else {
+                        if ((n%4)>0) {
+                            switch (n) {
+                                case 14: return 5;
+                                default: return 4;
+                            }
+                        }
+                        return 4;
+                    }
+                } else {
+                    //entro el 2
+                    return 2; //final de 2
+                }
+            } else {
+                //es impar
+                //entro el 3,5,7,9,11,13,15,17,49,53,61,63
+                if (n%3==0) {
+                    //entro el 3,9,15
+                    if (n!=3) {
+                        //entro el 9,15
+                        if ((n%3)>2) { //si lo que quedan afuera son mas que dos riders...
+                            //entro el 15
+                            return 4;
+                        } else {
+                            //entro el 9
+                            return 3;
+                        }
+                    } else {
+                        //entro el 3
+                        return 3;
+                    }
+                } else if (n%5==0) {
+                    //entro el 5,65
+                    return 5;
+                } else {
+                    //entro el 11,13,49,53
+                    switch (n) {
+                        case 41: return 3;
+                        case 49: return 5;
+                        case 53: return 5;
+                        default: return 4;
+                    }
+                }
+            }
+        } else {
+            //return "Solo hay un inscripto, por lo tanto no podras competir";
+            return 1;
+        }
     }
 
 }

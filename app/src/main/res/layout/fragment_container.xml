@@ -1,15 +1,18 @@
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/maincontainer"
+    android:background="@color/inactive"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.voltiosx.nolti.wavescore.ui.fragments.InscriptosFragment">
 
-    <!--<ListView
-        android:id="@+id/inscriptos_chekin"
+    <TextView
+        android:id="@+id/hola"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:divider="@color/inactiveTextColor"
-        android:dividerHeight="1dp" />-->
-
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:text="@string/hola"
+        android:textColor="@color/light50"
+        android:textSize="60sp" />
 </FrameLayout>

@@ -16,7 +16,6 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Button;
 import android.widget.ListView;
-
 import com.voltiosx.nolti.wavescore.io.AsyncResult;
 import com.voltiosx.nolti.wavescore.io.DownloadGsonSpreadsheetGoogle;
 import com.voltiosx.nolti.wavescore.io.ScorePickerComunicator;
@@ -24,9 +23,7 @@ import com.voltiosx.nolti.wavescore.models.Rider;
 import com.voltiosx.nolti.wavescore.ui.fragments.FixtureFragment;
 import com.voltiosx.nolti.wavescore.ui.fragments.HeatFragment;
 import com.voltiosx.nolti.wavescore.ui.fragments.ResultsFragment;
-import com.voltiosx.nolti.wavescore.ui.fragments.ScorePickerFragment;
 import com.voltiosx.nolti.wavescore.ui.fragments.ViewPagerInscriptosFragment;
-import com.voltiosx.nolti.wavescore.ui.fragments.OpenProFragment;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -37,7 +34,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
     /* VARIABLES GLOBALES */
     String categoryName;
-    String fileInscriptos = "https://spreadsheets.google.com/tq?key=1OmpSsnC9Rn_wxdSs0_JpK86V1d8SfGWIvAqaskn7BXA";
+    //String fileInscriptos = "https://spreadsheets.google.com/tq?key=1OmpSsnC9Rn_wxdSs0_JpK86V1d8SfGWIvAqaskn7BXA";
+    String fileInscriptos = "https://spreadsheets.google.com/tq?key=1EruePXicwIDMokjPB35shwUAkuosnCHbyvd9oY_YgX8";
     String totalInscriptos;
     ListView listview;
     Button btnDownload; //Reemplazarlo por el del menu Navigator
@@ -199,9 +197,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             fragmentmanager.beginTransaction().replace(R.id.maincontainer, inscriptosViewPager).addToBackStack(null).commit();
         } else if (id == R.id.nav_fixtures) {
             menuselect = getString(R.string.fixtures);
-            // Genero fixture para Open Pro unicamente por ahora...
             sendtofixture(openpros);
-            //fragmentmanager.beginTransaction().replace(R.id.maincontainer, fixtureFragment).addToBackStack(null).commit();
         } else if (id == R.id.nav_puntuaciones) {
             menuselect = getString(R.string.puntuaciones);
             fragmentmanager.beginTransaction().replace(R.id.maincontainer, heatFragment).addToBackStack(null).commit();
@@ -251,6 +247,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
             // Categorizo en sublistas
             categorizar(rows);
+            sendtofixture(openpros);
 
             /*Gson gson = new Gson();
             String fixtureJson = gson.toJson(openpros);
@@ -327,7 +324,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                         Rider dama = new Rider(id, p, n, l, c, colores, w, sw, hs, s);
                         damas.add(dama);
                         break;
-                    case "AMATEURS":
+                    case "AMATEUR":
                         Rider amateur = new Rider(id, p, n, l, c, colores, w, sw, hs, s);
                         amateurs.add(amateur);
                         break;
@@ -362,7 +359,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     private void sendtofixture(ArrayList<Rider> categorytofixture){
         Bundle fixturebundle = new Bundle();
         fixturebundle.putParcelableArrayList("fixturelist", categorytofixture);
-        Fragment fixtureFragment = new FixtureFragment();
         fixtureFragment.setArguments(fixturebundle);
         fragmentmanager.beginTransaction().replace(R.id.maincontainer, fixtureFragment).addToBackStack(null).commit();
     }
