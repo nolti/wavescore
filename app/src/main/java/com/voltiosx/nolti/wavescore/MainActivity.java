@@ -34,8 +34,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
     /* VARIABLES GLOBALES */
     String categoryName;
-    //String fileInscriptos = "https://spreadsheets.google.com/tq?key=1OmpSsnC9Rn_wxdSs0_JpK86V1d8SfGWIvAqaskn7BXA";
-    String fileInscriptos = "https://spreadsheets.google.com/tq?key=1EruePXicwIDMokjPB35shwUAkuosnCHbyvd9oY_YgX8";
+    String fileInscriptos = "https://spreadsheets.google.com/tq?key=1OmpSsnC9Rn_wxdSs0_JpK86V1d8SfGWIvAqaskn7BXA";
+    //String fileInscriptos = "https://spreadsheets.google.com/tq?key=1EruePXicwIDMokjPB35shwUAkuosnCHbyvd9oY_YgX8";
     String totalInscriptos;
     ListView listview;
     Button btnDownload; //Reemplazarlo por el del menu Navigator
