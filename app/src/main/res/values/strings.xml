@@ -28,6 +28,8 @@
     <string name="number_picker_formatter">%02d</string>
     <string name="number_picker_0">0</string>
 
+
+    <string name="no_localidad">Localidad no especificada</string>
     <string name="de">de</string>
     <string name="agree">De acuerdo</string>
     <string name="disagree">Cancelar</string>

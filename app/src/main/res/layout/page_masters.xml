@@ -4,7 +4,7 @@ xmlns:tools="http://schemas.android.com/tools"
 android:id="@+id/fragment_inscriptos"
 android:layout_width="match_parent"
 android:layout_height="match_parent"
-tools:context="com.voltiosx.nolti.wavescore.ui.fragments.ViewPagerInscriptosFragment">
+tools:context="com.example.nolti.wavescore.ui.fragments.ViewPagerInscriptosFragment">
 <ListView
     android:id="@+id/list_masters"
     android:layout_width="wrap_content"
