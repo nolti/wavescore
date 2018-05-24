@@ -1,7 +1,6 @@
 package com.example.nolti.wavescore;
 
 import android.os.Bundle;
-
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.GoogleApiAvailability;
 import com.google.api.client.extensions.android.http.AndroidHttp;
@@ -14,11 +13,9 @@ import com.google.api.client.http.HttpTransport;
 import com.google.api.client.json.JsonFactory;
 import com.google.api.client.json.jackson2.JacksonFactory;
 import com.google.api.client.util.ExponentialBackOff;
-
 import com.google.android.gms.auth.GoogleAuthException;
 import com.google.api.services.script.model.*;
 import java.util.Map;
-
 import android.Manifest;
 import android.accounts.AccountManager;
 import android.app.Activity;
@@ -40,12 +37,10 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-
 import pub.devrel.easypermissions.AfterPermissionGranted;
 import pub.devrel.easypermissions.EasyPermissions;
 
@@ -61,7 +56,7 @@ public class Quickstart extends Activity
         static final int REQUEST_GOOGLE_PLAY_SERVICES = 1002;
         static final int REQUEST_PERMISSION_GET_ACCOUNTS = 1003;
 
-        private static final String BUTTON_TEXT = "Call Google Apps Script API";
+        private static final String BUTTON_TEXT = "Conectar con Google Apps Script API";
         private static final String PREF_ACCOUNT_NAME = "accountName";
         private static final String[] SCOPES = { "https://www.googleapis.com/auth/script.projects" };
 
@@ -103,11 +98,11 @@ public class Quickstart extends Activity
             mOutputText.setVerticalScrollBarEnabled(true);
             mOutputText.setMovementMethod(new ScrollingMovementMethod());
             mOutputText.setText(
-                    "Click the \'" + BUTTON_TEXT +"\' button to test the API.");
+                    "Click en el \'" + BUTTON_TEXT +"\' boton para testear la API.");
             activityLayout.addView(mOutputText);
 
             mProgress = new ProgressDialog(this);
-            mProgress.setMessage("Calling Google Apps Script API ...");
+            mProgress.setMessage("Comunicandose con Google Apps Script API...");
 
             setContentView(activityLayout);
 
@@ -317,10 +312,9 @@ public class Quickstart extends Activity
         }
 
         /**
-         * Display an error dialog showing that Google Play Services is missing
-         * or out of date.
-         * @param connectionStatusCode code describing the presence (or lack of)
-         *     Google Play Services on this device.
+         * Muestra un cuadro de diálogo con el error: faltan los Google Play Services o estan desactualizados.
+         * @param connectionStatusCode código que describe la presencia (o la falta de)
+         *                             Servicios de Google Play en este dispositivo.
          */
         void showGooglePlayServicesAvailabilityErrorDialog(
         final int connectionStatusCode) {
@@ -333,8 +327,8 @@ public class Quickstart extends Activity
         }
 
         /**
-         * An asynchronous task that handles the Google Apps Script API call.
-         * Placing the API calls in their own task ensures the UI stays responsive.
+         * Una tarea asincrónica que maneja la llamada API de Google Apps Script.
+         * Coloca las llamadas a la API en su propia tarea y garantiza que la UI se mantenga receptiva.
          */
         private class MakeRequestTask extends AsyncTask<Void, Void, List<String>> {
             private com.google.api.services.script.Script mService = null;
@@ -350,8 +344,8 @@ public class Quickstart extends Activity
             }
 
             /**
-             * Background task to call Google Apps Script API.
-             * @param params no parameters needed for this task.
+             * Tarea Background para llamar Google Apps Script API.
+             * @param params no tiene parámetros necesarios para esta tarea.
              */
             @Override
             protected List<String> doInBackground(Void... params) {
@@ -365,11 +359,16 @@ public class Quickstart extends Activity
             }
 
             /**
-             * Call the API to run an Apps Script function that returns a list
+             * Llama a la API para ejecutar una funcion de Apps Script function que devuelve una lista
              * of folders within the user's root directory on Drive.
              *
              * @return list of String folder names and their IDs
              * @throws IOException
+             *
+             * de carpetas dentro del directorio raíz del usuario en Drive.
+             *
+             * @return lista de nombres de carpetas de cadenas y sus ID
+             * @throws IOException
              */
             private List<String> getDataFromApi()
                     throws IOException, GoogleAuthException {
@@ -461,9 +460,9 @@ public class Quickstart extends Activity
             protected void onPostExecute(List<String> output) {
                 mProgress.hide();
                 if (output == null || output.size() == 0) {
-                    mOutputText.setText("No results returned.");
+                    mOutputText.setText("No se devolvieron resultados.");
                 } else {
-                    output.add(0, "Data retrieved using the Google Apps Script API:");
+                    output.add(0, "Datos recuperados con la Google Apps Script API:");
                     mOutputText.setText(TextUtils.join("\n", output));
                 }
             }
@@ -481,11 +480,11 @@ public class Quickstart extends Activity
                                 ((UserRecoverableAuthIOException) mLastError).getIntent(),
                                 Quickstart.REQUEST_AUTHORIZATION);
                     } else {
-                        mOutputText.setText("The following error occurred:\n"
+                        mOutputText.setText("Ocurrió el siguiente error:\n"
                                 + mLastError.getMessage());
                     }
                 } else {
-                    mOutputText.setText("Request cancelled.");
+                    mOutputText.setText("Solicitud cancelada.");
                 }
             }
         }
