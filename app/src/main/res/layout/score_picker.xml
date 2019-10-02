@@ -9,7 +9,7 @@
     android:background="@color/primaryDarkColor"
     tools:context="com.example.nolti.wavescore.MainActivity">
 
-    <android.support.constraint.ConstraintLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_gravity="center">
@@ -91,6 +91,6 @@
             app:np_width="180dp"
             app:np_wrapSelectorWheel="true" />
 
-    </android.support.constraint.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </FrameLayout>

@@ -2,10 +2,10 @@ package com.example.nolti.wavescore.ui.fragments;
 
 import android.content.Context;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.v4.app.Fragment;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
+import androidx.annotation.NonNull;
+import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -15,10 +15,15 @@ import com.example.nolti.wavescore.models.InstanceItem;
 import com.example.nolti.wavescore.models.ListItem;
 import com.example.nolti.wavescore.models.ResultItem;
 import com.example.nolti.wavescore.models.Rider;
+import com.example.nolti.wavescore.models.RiderHeat;
 import com.example.nolti.wavescore.ui.adapters.ResultsAdapter;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
 
@@ -28,6 +33,7 @@ public class ResultsFragment extends Fragment {
     private ArrayList<Rider> resultsheat = new ArrayList<>();
     @NonNull
     private List<ListItem> items = new ArrayList<>();
+    private DatabaseReference WaveScoreDB;
 
     public ResultsFragment() {
 
@@ -40,6 +46,10 @@ public class ResultsFragment extends Fragment {
         if (getArguments() != null) {
             resultsheat = getArguments().getParcelableArrayList(KEY);
             Log.d("RESULTADOS DEL HEAT", String.valueOf(resultsheat));
+
+            // Set instance of FIREBASE DATABASE REFERENCE
+            WaveScoreDB = FirebaseDatabase.getInstance().getReference("RidersHeats");
+            registerRiderHeat();
         }
     }
 
@@ -70,14 +80,34 @@ public class ResultsFragment extends Fragment {
         recycler.setLayoutManager(new LinearLayoutManager(contexto, LinearLayoutManager.VERTICAL, false));
         recycler.setAdapter(new ResultsAdapter(items));
         return vista;
+
     }
 
-    // metodo redondeo Double
+    // Metodo para registrar los RIDERS HEATS
+    public void registerRiderHeat() { //public void writeNewRider(String userId, String name, String email) {
+        String key = WaveScoreDB.push().getKey();
+
+        ArrayList wavescores = new ArrayList<Double>();
+        wavescores.add(3.5);
+        wavescores.add(9);
+        wavescores.add(2);
+        wavescores.add(5);
+        wavescores.add(7.5);
+
+        RiderHeat riderHeat = new RiderHeat(1, 5, "7", "Manuel Santamaria", "Mar del Plata", "OPEN PRO", "Semifinal #1", "Gano por 2.5", "Azul", wavescores, 16.5);
+
+        //WaveScoreDB.child("RidersHeats").setValue(riderHeat);
+
+        /*User user = new User(name, email);
+        mDatabase.child("users").child(userId).setValue(user);*/
+    }
+
+    // Metodo redondeo Double
     private static double round(double value, int places) {
         if (places < 0) throw new IllegalArgumentException();
         BigDecimal bd = new BigDecimal(value);
         bd = bd.setScale(places, RoundingMode.HALF_UP);
-        return bd.doubleValue();
+         return bd.doubleValue();
     }
 
     // Metodo inicializa los puntajes al azar

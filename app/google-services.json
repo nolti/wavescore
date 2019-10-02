@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "747572652532",
+    "firebase_url": "https://wavescore-10b40.firebaseio.com",
+    "project_id": "wavescore-10b40",
+    "storage_bucket": "wavescore-10b40.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:747572652532:android:23157a600801ac789bb1a1",
+        "android_client_info": {
+          "package_name": "com.voltiosx.wavescore"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "747572652532-s5nthfodmeu31gvb1eb2s0e51fo10u08.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.voltiosx.wavescore",
+            "certificate_hash": "cb97c9b4e1c8159be227dffc31bafff1f7fa6bac"
+          }
+        },
+        {
+          "client_id": "747572652532-6blckecnfrcbscukj868fvc84btnr706.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD0uJab30VhJcL_l7HFO2gf2ZmlkdGTk28"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "747572652532-6blckecnfrcbscukj868fvc84btnr706.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,0 +1,26 @@
+{
+    "Riders": [
+        {
+            "id": 1,
+            "name": "Manuel Santamaria",
+            "hometown": "Mar del Plata Buenos Aires",
+            "ranking": 7,
+            "heatstatus": "Semifinal 1",
+            "categoria": "OPEN PRO",
+            "colorlycra": "color",
+            "wavescores": [
+                3.5,
+                7,
+                2,
+                5,
+                8.5,
+                1,
+                9
+            ],
+            "bestwaves": [9, 8.5],
+            "totalscore": "17.5",
+            "position": 1,
+            "latestatus": "Gano"
+        }
+    ]
+}

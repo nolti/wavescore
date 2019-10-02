@@ -13,7 +13,7 @@ import com.example.nolti.wavescore.R;
 
 //import at.markushi.circlebutton.R;
 
-public class CircleButton extends android.support.v7.widget.AppCompatImageView {
+public class CircleButton extends androidx.appcompat.widget.AppCompatImageView {
 
 	private static final int PRESSED_COLOR_LIGHTUP = 255 / 25;
 	private static final int PRESSED_RING_ALPHA = 75;
