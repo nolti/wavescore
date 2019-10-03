@@ -2,14 +2,16 @@ package com.example.nolti.wavescore.ui.fragments;
 
 import android.content.Context;
 import android.os.Bundle;
-import androidx.annotation.NonNull;
-import androidx.fragment.app.Fragment;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
+import androidx.annotation.NonNull;
+import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
 import com.example.nolti.wavescore.R;
 import com.example.nolti.wavescore.models.InstanceItem;
 import com.example.nolti.wavescore.models.ListItem;
@@ -23,7 +25,6 @@ import com.google.firebase.database.FirebaseDatabase;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
 
@@ -33,7 +34,8 @@ public class ResultsFragment extends Fragment {
     private ArrayList<Rider> resultsheat = new ArrayList<>();
     @NonNull
     private List<ListItem> items = new ArrayList<>();
-    private DatabaseReference WaveScoreDB;
+    private FirebaseDatabase WaveScoreDB;
+    private DatabaseReference WaveScoreDBRef;
 
     public ResultsFragment() {
 
@@ -48,8 +50,22 @@ public class ResultsFragment extends Fragment {
             Log.d("RESULTADOS DEL HEAT", String.valueOf(resultsheat));
 
             // Set instance of FIREBASE DATABASE REFERENCE
-            WaveScoreDB = FirebaseDatabase.getInstance().getReference("RidersHeats");
-            registerRiderHeat();
+            //WaveScoreDBRef = FirebaseDatabase.getInstance().getReference("RidersHeats");
+            WaveScoreDB = FirebaseDatabase.getInstance();
+            WaveScoreDBRef = FirebaseDatabase.getInstance().getReference();
+            WaveScoreDBRef.setValue("Hola");
+            writeRiderHeat();
+            Log.d("FIREBASE CONECT KEY", String.valueOf(WaveScoreDBRef.getKey()));
+
+
+            /*
+            // Write a message to the database
+            FirebaseDatabase database = FirebaseDatabase.getInstance();
+            DatabaseReference myRef = database.getReference("message");
+
+            myRef.setValue("Hello, World!");
+            */
+
         }
     }
 
@@ -80,24 +96,24 @@ public class ResultsFragment extends Fragment {
         recycler.setLayoutManager(new LinearLayoutManager(contexto, LinearLayoutManager.VERTICAL, false));
         recycler.setAdapter(new ResultsAdapter(items));
         return vista;
-
     }
 
     // Metodo para registrar los RIDERS HEATS
-    public void registerRiderHeat() { //public void writeNewRider(String userId, String name, String email) {
-        String key = WaveScoreDB.push().getKey();
+    public void writeRiderHeat() { //public void writeRiderHeat(String userId, String name, String email, etc) {
+        //String key = dbRef.push().getKey();
 
+        // Preparo un objeto con los datos del RiderHeat
         ArrayList wavescores = new ArrayList<Double>();
         wavescores.add(3.5);
         wavescores.add(9);
         wavescores.add(2);
         wavescores.add(5);
         wavescores.add(7.5);
-
         RiderHeat riderHeat = new RiderHeat(1, 5, "7", "Manuel Santamaria", "Mar del Plata", "OPEN PRO", "Semifinal #1", "Gano por 2.5", "Azul", wavescores, 16.5);
-
+        RiderHeat riderHeat2 = new RiderHeat(2, 5, "7", "Celeste Marinesco", "Mar del Plata", "DAMAS PRO", "FINAL", "Gano por 1.5", "Azul", wavescores, 1.5);
+        WaveScoreDBRef.setValue(riderHeat);
+        WaveScoreDBRef.setValue(riderHeat2);
         //WaveScoreDB.child("RidersHeats").setValue(riderHeat);
-
         /*User user = new User(name, email);
         mDatabase.child("users").child(userId).setValue(user);*/
     }
