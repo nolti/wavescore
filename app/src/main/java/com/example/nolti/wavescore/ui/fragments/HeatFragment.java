@@ -494,7 +494,7 @@ public class HeatFragment extends Fragment {
                     // Log status
                     Log.d("STATUS", rider.getName() +" "+ rider.getHeatstatus());
 
-                    // ingresa si hay empate
+                    // ingresa si hay empate entre dos riders
                     if (needtieScore==0.0) {
                         Log.d("EMPATE dos olas", "needtieScore==0.0");
                         Log.d("GANADOR empate", ridersheat.get(0).getName()+" OLAS "+ridersheat.get(i-1).getSortwavestaken());
