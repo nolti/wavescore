@@ -5,26 +5,35 @@
 
     <group android:checkableBehavior="single">
         <item
+            android:id="@+id/nav_torneos"
+            android:icon="@drawable/cup"
+            android:title="@string/torneos" />
+
+        <item
             android:id="@+id/nav_inscriptos"
-            android:icon="@drawable/ic_inscriptos"
+            android:icon="@drawable/inscriptos"
             android:title="@string/inscriptos" />
 
         <item
             android:id="@+id/nav_fixtures"
-            android:icon="@drawable/ic_fixture"
+            android:icon="@drawable/fixture"
             android:title="@string/fixtures" />
         <item
             android:id="@+id/nav_puntuaciones"
-            android:icon="@drawable/ic_puntuaciones"
+            android:icon="@drawable/score"
             android:title="@string/puntuaciones" />
         <item
             android:id="@+id/nav_resultados"
-            android:icon="@drawable/ic_resultados"
+            android:icon="@drawable/results"
             android:title="@string/resultados" />
         <item
             android:id="@+id/nav_rankings"
-            android:icon="@drawable/ic_ranking"
+            android:icon="@drawable/ranking"
             android:title="@string/rankings" />
+        <item
+            android:id="@+id/nav_logout"
+            android:icon="@drawable/exit_app"
+            android:title="@string/log_out" />
     </group>
 
 </menu>

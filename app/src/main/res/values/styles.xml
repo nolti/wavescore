@@ -1,33 +1,67 @@
 <resources>
 
     <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+    <style name="WaveScoreTheme" parent="Theme.AppCompat.DayNight"> <!-- <style name="AppTheme" parent="Theme.AppCompat.DayNight.DarkActionBar"> -->
         <!-- Customize your theme here. -->
-        <item name="colorPrimary">@color/primaryColor</item>
-        <item name="colorPrimaryDark">@color/primaryDarkColor</item>
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
-        <item name="drawerArrowStyle">@style/MyDrawerArrowToggle</item>
-        <item name="android:actionOverflowButtonStyle">@style/settingBtn</item>
     </style>
 
-    <style name="AppTheme.NoActionBar" parent="ThemeOverlay.AppCompat.Dark">
-        <item name="windowActionBar">false</item>
-        <item name="windowNoTitle">false</item>
+    <!--
+    Elimina la ActionBar
+    <item name="windowActionBar">false</item>
+    <item name="windowNoTitle">true</item>
+    -->
+
+
+    <!-- Estilo para el contador de caracteres en los inputs -->
+    <style name="CounterStyle" parent="TextAppearance.AppCompat.Small">
+        <item name="android:textColor">@color/secondaryLightColor</item>
     </style>
 
-    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+    <!--<item name="drawerArrowStyle">@style/MyDrawerArrowToggle</item> <item name="android:actionOverflowButtonStyle">@style/settingBtn</item>-->
 
-    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
-
-    <style name="MyDrawerArrowToggle" parent="Widget.AppCompat.DrawerArrowToggle">
-        <item name="color">@color/colorAccent</item>
-    </style>
-
-    <style name="settingBtn" parent="@style/Widget.AppCompat.ActionButton.Overflow">
+    <!--<style name="settingBtn" parent="@style/Widget.AppCompat.ActionButton.Overflow">
         <item name="android:tint">@color/colorAccent</item>
+    </style>-->
+
+    <!-- Estilo para TextInputLayout -->
+    <style name="TextInputLayout1" parent="Widget.MaterialComponents.TextInputLayout.FilledBox">
+        <!-- Style attributes -->
+        <item name="boxCornerRadiusBottomStart">0dp</item>
+        <item name="boxCornerRadiusTopStart">24dp</item>
+        <item name="boxCornerRadiusTopEnd">24dp</item>
+        <item name="boxCornerRadiusBottomEnd">0dp</item>
+
+        <!-- Theme attributes -->
+        <item name="android:textColorHint">@color/monokai_lila</item> <!-- Color de la sugerencia de texto: inactiva -->
+        <item name="colorControlActivated">@color/secondaryLightColor</item> <!-- Color de la sugerencia de texto: activa y minimizada arriba -->
+        <item name="colorControlNormal">@color/wavescoreControlActivated</item> <!-- Color del subrayado: normal -->
+        <item name="android:textColor">@color/colorAccent</item>
+
+        <!-- Layout attributes -->
+        <item name="hintTextAppearance">@style/HintText</item>
+        <item name="helperTextTextAppearance">@style/HelperText</item>
+        <item name="errorTextAppearance">@style/ErrorText</item>
+        <item name="counterTextAppearance">@style/HintText</item>
+    </style>
+
+    <!-- Estilo para EditText Hint / Sugerencia de texto -->
+    <style name="HintText" parent="TextAppearance.AppCompat">
+        <item name="android:textColor">@color/monokai_green</item>
+        <item name="android:textSize">14sp</item>
+    </style>
+
+    <style name="HelperText" parent="TextAppearance.AppCompat">
+        <item name="android:textColor">@color/monokai_green</item>
+        <item name="android:textSize">14sp</item>
+    </style>
+
+    <!-- Estilo para EditText error -->
+    <style name="ErrorText" parent="TextAppearance.AppCompat">
+        <item name="android:textColor">@color/monokai_magentuosa</item>
+        <item name="android:textSize">14sp</item>
     </style>
 
 </resources>
-
-
-

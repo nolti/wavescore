@@ -1,39 +1,40 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="light10">#10ffffff</color>
-    <color name="light20">#20ffffff</color>
-    <color name="light30">#30ffffff</color>
-    <color name="light50">#50ffffff</color>
-    <color name="opaco10">#10000000</color>
-    <color name="opaco20">#20000000</color>
+    <!-- COLORES POR DEFECTO ANDROID -->
+    <color name="colorPrimary">#6957A0</color>
+    <color name="colorPrimaryDark">#191919</color>
+    <color name="primaryDarkColor">#07090E</color>
+    <color name="colorSecondary">#03DAC6</color>
+    <color name="colorAccent">#03DAC6</color> <!--<color name="colorAccent">#6699CC</color>-->
+
+    <color name="wavescoreBackground">#0C0E15</color>
+    <color name="wavescoreBackgroundElevation2">#191A21</color>
+    <color name="wavescoreBackgroundElevation3">#252A3C</color>
+    <color name="wavescoreTextElevation2">#636D9C</color>
+
     <color name="opaco30">#30000000</color>
     <color name="opaco50">#50000000</color>
     <color name="darkgrey">#95000000</color>
-    <!--<color name="primaryColor">#272822</color>-->
-    <!--<color name="primaryColor">#2c292e</color>-->
-    <!--<color name="primaryColor">#282A36</color>-->
-    <color name="primaryColor">#1E1E1E</color>
-    <color name="primaryDarkColor">#191919</color>
+    <!--<color name="colorPrimary">#272822</color>-->
+    <!--<color name="colorPrimary">#2c292e</color>-->
+    <!--<color name="colorPrimary">#282A36</color>-->
     <!--<color name="colorAccent">#3ca4dc</color>-->
-    <color name="colorAccent">#6699CC</color>
-    <color name="primaryLightColor">#25334b</color>
-    <color name="secondaryColor">#3b2e71</color>
-    <color name="terciaryColor">#444167</color>
-    <color name="secondaryLightColor">#6957a0</color>
-    <color name="secondaryDarkColor">#322b55</color>
-    <color name="primaryTextColor">#8cdaff</color>
-    <color name="secondaryTextColor">#788dc7</color>
-    <color name="terciaryTextColor">#ff5b61</color>
-    <color name="inactiveTextColor">#6d6d6d</color>
-    <color name="inactive">#2e2e2e</color>
+    <color name="secondaryLightColor">#6957A0</color>
+    <color name="wavescoreControlActivated">#3C2F71</color>
+    <color name="primaryTextColor">#8CDAFF</color>
+
+    <color name="wavescoreInactive">#15151F</color>
+    <color name="boxBackgroundWavescore">#252634</color>
+
+    <color name="inactive">#2E2E2E</color>
 
     <!-- ALPHA 100% - FF 95% - F2 90% - E6 85% - D9 80% - CC 75% - BF-->
-    <color name="colorTextLight">#d9ffffff</color>
-    <color name="colorTextDark">#d9424242</color>
+    <color name="colorTextLight">#D9FFFFFF</color>
+    <color name="colorTextDark">#D9424242</color>
 
     <!--<color name="colorLycra1">#F92672</color>-->
     <!--<color name="colorLycra1">#ec407a</color>-->
-    <color name="colorLycra1">#f65282</color>
+    <color name="colorLycra1">#F65282</color>
     <color name="colorLycra2">#2196f3</color>
     <!--<color name="colorLycra3">#ffeb3b</color>-->
     <color name="colorLycra3">#E6DB74</color>
@@ -41,31 +42,29 @@
     <color name="colorLycra5">#FEA862</color>
     <!--<color name="colorLycra5">#FF8C52</color>-->
     <!--<color name="colorLycra5">#FD971F</color>-->
-    <color name="colorLycra6">#6957a0</color>
+    <color name="colorLycra6">#6957A0</color>
     <!--<color name="colorLycra6">#AE81FF</color>-->
     <color name="colorLycra7">#424242</color>
     <color name="colorLycra8">#fafafa</color>
 
     <color name="monokai_bg0">#272822</color>
     <color name="monokai_bg1">#3e3d32</color>
-    <color name="monokai_bg2">#75715e</color>
-    <color name="monokai_bg3">#FFFFFF</color>
     <color name="monokai_fg0">#f8f8f2</color>
     <color name="monokai_fg1">#cfcfc2</color>
     <color name="monokai_fg2">#807E7A</color>
-    <color name="monokai_fg3">#676761</color>
-    <color name="monokai_blue">#66d9ef</color>
-    <color name="monokai_cyan">#A1EFE4</color>
+    <color name="monokai_blue">#66D9EF</color>
     <color name="monokai_emerald">#78dde8</color>
-    <color name="monokai_violet">#AE81FF</color>
     <color name="monokai_lila">#aa9cf2</color>
     <color name="monokai_pink">#F2777A</color>
-    <color name="monokai_magenta">#FD5FF0</color>
-    <color name="monokai_magentuosa">#ff6188</color>
-    <color name="monokai_red">#f92672</color>
+    <color name="monokai_magentuosa">#FF6188</color>
     <color name="monokai_ornge">#D27B53</color>
     <color name="monokai_yellow">#E6DB74</color>
-    <color name="monokai_yellow2">#FECC66</color>
-    <color name="monokai_green">#3cda7b</color>
-    <!--<color name="monokai_green">#A6E22E</color>-->
+    <color name="monokai_green">#3CDA7B</color>
+    <color name="gradient_start">#4c84ff</color>
+    <color name="tab_indicator_gray">#c0c0c0</color>
+
+    <color name="dollarText1">#81E0C4</color>
+    <color name="dollarText2">#88C6A3</color>
+    <color name="dollarBackground1">#202D31</color>
+    <color name="dollarBackground2">#525b54</color>
 </resources>

@@ -1,0 +1,291 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/wavescoreBackground"
+    tools:context="com.voltiosx.wavescore.ui.fragments.FormTournament">
+
+    <!--<ProgressBar
+        android:id="@+id/progressBar_cyclic"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:minWidth="50dp"
+        android:minHeight="50dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />-->
+
+    <ScrollView
+        android:id="@+id/scrollView2"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@+id/btn_tournament"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingStart="16dp"
+            android:paddingTop="24dp"
+            android:paddingEnd="16dp"
+            android:paddingBottom="16dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <!-- CAMPO NOMBRE TORNEO -->
+            <ImageView
+                android:id="@+id/isologo_form"
+                android:layout_width="70dp"
+                android:layout_height="70dp"
+                android:layout_gravity="center_horizontal|center_vertical"
+                android:layout_marginBottom="24dp"
+                android:contentDescription="@string/torneos"
+                android:src="@drawable/wavescore_isologo" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:theme="@style/TextInputLayout1"
+                app:boxBackgroundColor="@color/boxBackgroundWavescore"
+                app:counterEnabled="true"
+                app:counterMaxLength="100"
+                app:counterTextAppearance="@style/CounterStyle">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/name_tournament"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/name_form_tournament"
+                    android:inputType="textPersonName"
+                    android:textColor="@color/colorTextLight" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <!-- CAMPO CIUDAD DEL TORNEO -->
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:theme="@style/TextInputLayout1"
+                app:boxBackgroundColor="@color/boxBackgroundWavescore"
+                app:counterEnabled="true"
+                app:counterMaxLength="50"
+                app:counterTextAppearance="@style/CounterStyle">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/city_tournament"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/city_form_tournament"
+                    android:inputType="textPersonName"
+                    android:textColor="@color/colorTextLight" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <!-- CAMPO LUGAR DEL TORNEO -->
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:theme="@style/TextInputLayout1"
+                app:boxBackgroundColor="@color/boxBackgroundWavescore"
+                app:counterEnabled="true"
+                app:counterMaxLength="70"
+                app:counterTextAppearance="@style/CounterStyle">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/location_tournament"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/location_form_tournament"
+                    android:inputType="textPersonName"
+                    android:textColor="@color/colorTextLight" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <!-- CAMPO DESCRIPCION DEL TORNEO -->
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:theme="@style/TextInputLayout1"
+                app:boxBackgroundColor="@color/boxBackgroundWavescore"
+                app:counterEnabled="true"
+                app:counterMaxLength="500"
+                app:counterTextAppearance="@style/CounterStyle">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/description_tournament"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:ems="20"
+                    android:gravity="top|start"
+                    android:hint="@string/description_form_tournament"
+                    android:inputType="textMultiLine"
+                    android:lines="5"
+                    android:textColor="@color/colorTextLight"
+                    android:textSize="15sp" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <!-- CAMPO CATEGORIA/S DEL TORNEO -->
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recycler_categorys_tournament"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:theme="@style/TextInputLayout1"
+                app:boxBackgroundColor="@color/boxBackgroundWavescore"
+                app:counterEnabled="true"
+                app:counterMaxLength="30"
+                app:counterTextAppearance="@style/CounterStyle"
+                app:errorEnabled="false"
+                app:helperText="@string/info_category_form_tournament">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/category_tournament"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/category_form_tournament"
+                    android:inputType="textPersonName"
+                    android:maxLength="50"
+                    android:textColor="@color/colorTextLight" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <Button
+                android:id="@+id/btn_category"
+                android:layout_width="180dp"
+                android:layout_height="50dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="16dp"
+                android:backgroundTint="@color/colorLycra6"
+                android:text="@string/add_category_form_tournament"
+                android:textColor="@color/colorTextLight" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:orientation="horizontal">
+
+                <!-- CAMPO FECHA DE INICIO -->
+                <ImageView
+                    android:id="@+id/imageDate"
+                    android:layout_width="32dp"
+                    android:layout_height="32dp"
+                    android:layout_gravity="top"
+                    android:layout_marginEnd="12dp"
+                    android:contentDescription="@string/date"
+                    android:src="@drawable/ic_date_tournament_white_24dp" />
+
+                <com.google.android.material.textfield.TextInputLayout
+                    style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="12dp"
+                    android:theme="@style/TextInputLayout1"
+                    app:boxBackgroundColor="@color/boxBackgroundWavescore"> <!--android:layout_weight="1"-->
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/date_tournament"
+                        android:layout_width="110dp"
+                        android:layout_height="wrap_content"
+                        android:hint="@string/date"
+                        android:inputType="text"
+                        android:textColor="@color/colorTextLight" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <!-- CAMPO HORARIO DE INICIO -->
+                <ImageView
+                    android:id="@+id/imageTime"
+                    android:layout_width="32dp"
+                    android:layout_height="32dp"
+                    android:layout_gravity="top"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginEnd="12dp"
+                    android:contentDescription="@string/time"
+                    android:src="@drawable/ic_time_tournament_white_24dp" />
+
+                <com.google.android.material.textfield.TextInputLayout
+                    style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="0dp"
+                    android:layout_marginBottom="8dp"
+                    android:theme="@style/TextInputLayout1"
+                    app:boxBackgroundColor="@color/boxBackgroundWavescore"> <!--android:layout_weight="1"-->
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/time_tournament"
+                        android:layout_width="110dp"
+                        android:layout_height="wrap_content"
+                        android:hint="@string/time"
+                        android:inputType="text"
+                        android:textColor="@color/colorTextLight" /> <!--android:layout_weight="1"-->
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+            </LinearLayout>
+
+            <!--<View
+                android:id="@+id/divider"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginStart="0dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="0dp"
+                android:background="#7E57C2"
+                app:layout_constraintEnd_toEndOf="parent" />-->
+
+
+        </LinearLayout>
+    </ScrollView>
+
+    <Button
+        android:id="@+id/btn_tournament"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_gravity="center"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:backgroundTint="@color/monokai_green"
+        android:text="@string/btn_create_tournament"
+        android:textColor="@color/wavescoreInactive"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <ProgressBar
+        android:id="@+id/progressBar"
+        style="?android:attr/progressBarStyle"
+        android:progressDrawable="@drawable/circle_drawable"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:max="3"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

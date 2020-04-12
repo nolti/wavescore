@@ -9,7 +9,6 @@
     <!--<include layout="@layout/countdown" />-->
 
     <cn.iwgang.countdownview.CountdownView
-        android:id="@+id/cv_countdown"
         android:layout_width="90dp"
         android:layout_height="30dp"
         android:layout_alignParentRight="true"

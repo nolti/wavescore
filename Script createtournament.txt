@@ -1,0 +1,106 @@
+function doPost(e) {
+ var action = e.parameter.action || "noAction";
+ 
+ if (action == "createTournamentForm") {
+  
+  // Parametros POST
+  var ownerEmail = e.parameter.ownerEmail || "noltibb@gmail.com";
+  var nameTournament = e.parameter.nameTournament || "Tournament";
+  var cityTournament = e.parameter.cityTournament || "MDQ";
+  var locationTournament = e.parameter.locationTournament || "Address in Map";
+  var dateTournament = e.parameter.dateTournament || "04/07/1981";
+  var timeTournament = e.parameter.timeTournament || "04:00";
+  
+  // Parametros POST dinamicos
+  var c0 = e.parameter.catTournament0;
+  var c1 = e.parameter.catTournament1;
+  var c2 = e.parameter.catTournament2;
+  var c3 = e.parameter.catTournament3;
+  var c4 = e.parameter.catTournament4;
+  var c5 = e.parameter.catTournament5;
+  var c6 = e.parameter.catTournament6;
+  var c7 = e.parameter.catTournament7;
+  var c8 = e.parameter.catTournament8;
+  var c9 = e.parameter.catTournament9;
+  
+  var categorysTournament = [];
+  if (typeof c0 !== 'undefined') { categorysTournament[0] = c0; }
+  if (typeof c1 !== 'undefined') { categorysTournament[1] = c1; }
+  if (typeof c2 !== 'undefined') { categorysTournament[2] = c2; }
+  if (typeof c3 !== 'undefined') { categorysTournament[3] = c3; }
+  if (typeof c4 !== 'undefined') { categorysTournament[4] = c4; }
+  if (typeof c5 !== 'undefined') { categorysTournament[5] = c5; }
+  if (typeof c6 !== 'undefined') { categorysTournament[6] = c6; }
+  if (typeof c7 !== 'undefined') { categorysTournament[7] = c7; }
+  if (typeof c8 !== 'undefined') { categorysTournament[8] = c8; }
+  if (typeof c9 !== 'undefined') { categorysTournament[9] = c9; }
+  
+  var printCategorysTournament = "";
+  for (var i = 0; i<categorysTournament.length; i++){
+      printCategorysTournament += categorysTournament[i]+" ";
+  }
+  
+  // Creo el Formulario
+  var form = FormApp.create(nameTournament);
+  var formPublishedUrl = form.getPublishedUrl();
+  var formEditUrl = form.getEditUrl();
+  
+  // Seteo el nombre
+  form.setTitle(nameTournament);
+  
+  // Recibir emails
+  form.setCollectEmail(true);
+  
+  // Nombre
+  var name = 'Nombre';
+  var helperName = 'Ingresa tu Nombre y Apellido.';
+  form.addTextItem().setTitle(name).setHelpText(helperName).setRequired(true);
+  
+  // Nacimiento
+  var birth = 'Nacimiento';
+  var helperBirth = '¿Cuando naciste?';
+  form.addDateItem().setTitle(birth).setHelpText(helperBirth).setRequired(true);
+  
+  // Ciudad
+  var city = 'Ciudad';
+  var helperCity = 'Indica tu ciudad natal o la localidad que representas.';
+  form.addTextItem().setTitle(city).setHelpText(helperCity).setRequired(true);
+  
+  // Teléfono
+  var movil = 'Teléfono/Celular';
+  var helperMovil = 'Ingresa tu número de teléfono.';
+  form.addTextItem().setTitle(movil).setHelpText(helperMovil).setRequired(false);
+  
+  // Categorías
+  var categorys = 'Categorías';
+  var helperCategory = 'Selecciona almenos una categoría en la que vas a participar.';
+  
+  // CheckBox
+  var check = form.addCheckboxItem().setRequired(true);
+      check.setHelpText(helperCategory).setTitle(categorys);
+  var choices = [];
+  for (var i=0; i<categorysTournament.length; i++){
+      choices.push(categorysTournament[i]);
+  }
+  check.setChoiceValues(choices);
+  
+  // Envio email al organizador
+  var emailText = "El torneo "+nameTournament+" fue creado en el link: "+formPublishedUrl+"\n\n"
+  +" y puedes editarlo en el link: "+formEditUrl+"\n\n"
+  +"DATOS DEL FORMULARIO"+"\n"
+  +"ownerEmail = "+ownerEmail+"\n"
+  +"nameTournament = "+nameTournament+"\n"
+  +"cityTournament = "+cityTournament+"\n"
+  +"locationTournament = "+locationTournament+"\n"
+  +"dateTournament = "+dateTournament+"\n"
+  +"timeTournament = "+timeTournament+"\n"
+  +"categorysTournament = "+printCategorysTournament;
+  GmailApp.sendEmail(ownerEmail, nameTournament, emailText);
+  
+  // Respuesta a la app
+  // var response = "El formulario de inscripciones para "+nameTournament+" fue creado!"
+  return ContentService.createTextOutput(formPublishedUrl).setMimeType(ContentService.MimeType.TEXT);
+  
+  
+ } // end if action
+} // end doPost

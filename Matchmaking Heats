@@ -1,0 +1,19 @@
+DatabaseReference db;
+dbRef = FirebaseDatabase.getInstance().getReference();
+dbRef.push().set();
+
+creatorHeat: { name, uid, etc }
+joinerHeat: { name, uid, etc }
+stateHeat: 1 or 2 // 1 unjoined, 2 joined
+1) Creador del Heat (owner, creator, etc)
+2) Juez adjunto al heat (heat, joiner)
+3) Estado del usuario respecto al heat.
+
+A) Function createHeat
+B) Function joinHeat
+
+MatchMaking
+¿que pasa cuando dos jugadores se unen al mismo tiempo?
+
+Flujo del Heat
+OPEN -> JOINED -> PUT SCORE -> UPLOAD SCORE -> PROMEDIAR SCORES -> COMPLETE

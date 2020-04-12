@@ -1,0 +1,52 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/coordinator_tournament"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    android:layout_above="@id/app_bar"
+    android:background="@color/wavescoreBackground"
+    tools:context="com.voltiosx.wavescore.ui.fragments.TournamentsFragment">
+
+        <WebView
+            android:id="@+id/webview_form"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="?attr/actionBarSize"
+            android:visibility="invisible" />
+
+        <androidx.coordinatorlayout.widget.CoordinatorLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/recycler_tournaments"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginBottom="?attr/actionBarSize" />
+
+                <com.google.android.material.floatingactionbutton.FloatingActionButton
+                    android:id="@+id/create_tournament"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:src="@drawable/cup"
+                    android:tint="@color/wavescoreBackground"
+                    app:backgroundTint="@color/colorSecondary"
+                    app:fabSize="normal"
+                    app:layout_anchor="@id/app_bar"/>
+
+                <com.google.android.material.bottomappbar.BottomAppBar
+                    style="@style/Widget.MaterialComponents.BottomAppBar.Colored"
+                    android:id="@+id/app_bar"
+                    android:layout_width="match_parent"
+                    android:layout_height="?attr/actionBarSize"
+                    android:layout_gravity="bottom"
+                    android:backgroundTint="@color/wavescoreBackgroundElevation3"
+                    android:elevation="32dp" />
+
+        </androidx.coordinatorlayout.widget.CoordinatorLayout>
+
+</RelativeLayout>

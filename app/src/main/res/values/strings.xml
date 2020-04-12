@@ -1,29 +1,26 @@
 <resources>
     <string name="app_name">WaveScore</string>
-    <string name="hola">Hola!</string>
+
+    <!-- General -->
+    <string name="logo">Logo de la App</string>
+    <string name="user_photo">Foto de perfil</string>
+
     <!-- Menu -->
+    <string name="torneos">Torneos</string>
     <string name="inscriptos">Inscriptos</string>
     <string name="fixtures">Fixtures</string>
     <string name="puntuaciones">Puntuaciones</string>
     <string name="resultados">Resultados</string>
     <string name="rankings">Rankings</string>
+    <string name="log_out">Salir</string>
 
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
     <string name="action_settings">Settings</string>
-    <string name="ok">OK</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="hello_red_fragment">Hello red fragment</string>
-    <string name="hello_green_fragment">Hello green fragment</string>
-    <string name="title_activity_inscriptos">InscriptosActivity</string>
-    <string name="section_format">Hello World from section: %1$d</string>
 
     <!-- Font -->
     <string name="roboto_regular">sans-serif</string>
-    <string name="roboto_light">sans-serif-light</string>
-    <string name="roboto_condensed">sans-serif-condensed</string>
-    <string name="roboto_thin">sans-serif-thin</string>
-    <string name="roboto_medium">sans-serif-medium</string>
 
     <string name="number_picker_formatter">%02d</string>
     <string name="number_picker_0">0</string>
@@ -31,17 +28,11 @@
     <string name="no_localidad">Localidad no especificada</string>
     <string name="de">de</string>
     <string name="agree">De acuerdo</string>
-    <string name="disagree">Cancelar</string>
-    <string name="mas_info">Más infor</string>
-    <string name="maximum_waves">Puntuaste la última ola</string>
     <string name="no_score_waves">No se permite puntuar más olas al competidor</string>
 
-    <string name="best_wave1">Mejor Ola 1</string>
-    <string name="best_wave2">Mejor Ola 2</string>
     <string name="first_best_wave">Ola 1</string>
     <string name="second_best_wave">Ola 2</string>
     <string name="total">Total</string>
-    <string name="score">Puntaje</string>
     <string name="lycra">lycra</string>
 
     <!-- Status Heat -->
@@ -52,13 +43,71 @@
     <string name="status3">Necesitando para ganar otra ola de</string>
     <string name="status4">Necesitando para ganar una combinación de</string>
 
-    <string name="status5">Necesitando para clasificar una ola de</string>
-    <string name="status6">Necesitando para clasificar otra ola de</string>
-    <string name="status7">Necesitando para clasificar una combinación de</string>
-
     <string name="status8">Empatando</string>
     <string name="status9">Desempató por</string>
     <string name="status10">en la ola promediada nº</string>
     <string name="status11">en todas las olas promediadas</string>
+
+    <string name="tab_tournament_start">Crear torneo nuevo&#8230;</string>
+    <string name="tab_tournament_form">Formulario Torneo</string>
+
+    <string name="hl_tournament_start">Crea un torneo de Bodyboard o Surf!</string>
+    <string name="tv_tournament_start">Podrás crear las categorías en las que se inscribirán los Riders, sortear sus Heats y generar los Fixtures. Se generará un ranking de los competidores que participen durante toda la temporada.</string>
+
+    <!-- Form tournament -->
+    <string name="name_form_tournament">Nombre del torneo</string>
+    <string name="city_form_tournament">Ciudad</string>
+    <string name="location_form_tournament">Ubicación</string>
+    <string name="description_form_tournament">Describe a los usuarios de que se trata tu torneo.</string>
+    <string name="click_to_icon">Click en el icono para insertar la</string>
+    <string name="date">Fecha</string>
+    <string name="time">Hora</string>
+    <string name="category_form_tournament">Categoría</string>
+    <string name="add_category_form_tournament">Crear categoría</string>
+    <string name="info_category_form_tournament">Ingresa de a una, las categorías a participar del torneo.</string>
+    <string name="category_limit_max">Alcanzaste el límite máximo de categorías permitidas.</string>
+    <string name="btn_create_tournament">Crear Torneo</string>
+    <string name="position">posicion</string>
+    <string name="personal_data">información personal</string>
+    <string name="tournament_data">información del torneo</string>
+
+    <!-- Tournament -->
+    <string name="price_money">$10.000</string>
+    <string name="tour">PT #1</string>
+    <string name="name_tournament">Nombre del Torneo</string>
+    <string name="location_tournament">Ubicación, Ciudad, País</string>
+    <string name="status_tournament">Por inciar: Ene 1 - 10</string>
+    <string name="register">Inscribirse</string>
+
+    <!-- Login -->
+    <string name="title_activity_login">Iniciar sesion</string>
+    <string name="prompt_name">Nombre</string>
+    <string name="prompt_email">Email</string>
+    <string name="prompt_password">Clave</string>
+    <string name="action_sign_in">Registrarse</string>
+    <string name="action_sign_in_short">Registrarse</string>
+    <string name="login_succes">Sesión iniciada exitosamente!"</string>
+    <string name="login_out">Cerraste sesión"</string>
+    <string name="invalid_username">Ingrese un nombre de usuario</string>
+    <string name="invalid_useremail">Ingrese un correo valido</string>
+    <string name="invalid_password">La contraseña debe ser >5 caracteres</string>
+    <string name="login_failed">"Error en inicio de sesion"</string>
+    <string name="forgot_password">¿Olvidaste tu contraseña?</string>
+    <string name="create_account">Crear tu cuenta de WaveScore</string>
+
+    <!-- Login  google -->
+    <string name="sign_in_google">Acceder con Google</string>
+    <string name="login_failed_google">"Falló el inicio de sesión con Google"</string>
+    <string name="login_status">El usuario aún no ha iniciado sesión</string>
+    <string name="login_succes_google">Sesión iniciada con Google"</string>
+    <string name="login_succes_firebase">Sesión iniciada con Firebase"</string>
+    <string name="sign_out">Salir</string>
+
+    <!-- Login Facebook -->
+    <string name="facebook_app_id">1075326149507281</string>
+    <string name="fb_login_protocol_scheme">fb1075326149507281</string>
+    <string name="login_succes_facebook">Sesión iniciada con Facebook"</string>
+    <string name="name_status">Nombre de usuario</string>
+    <string name="email_status">nombre@dominio.com</string>
 
 </resources>

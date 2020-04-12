@@ -8,25 +8,27 @@
     android:fitsSystemWindows="true"
     tools:openDrawer="start">
 
-    <LinearLayout
-        android:orientation="vertical"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
+    <!-- Your content goes here -->
+    <androidx.coordinatorlayout.widget.CoordinatorLayout android:layout_width="match_parent" android:layout_height="match_parent" >
         <include layout="@layout/app_bar_main" />
         <include layout="@layout/fragment_container" />
-    </LinearLayout>
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
 
     <com.google.android.material.navigation.NavigationView
         android:id="@+id/nav_view"
-        android:layout_width="wrap_content"
+        android:layout_width="330dp"
         android:layout_height="match_parent"
         android:layout_gravity="start"
-        android:layout_marginTop="@dimen/margin_top_navigation"
-        android:background="@color/primaryColor"
+        android:background="@color/wavescoreBackground"
         android:fitsSystemWindows="true"
+
         app:headerLayout="@layout/nav_header_main"
-        app:itemIconTint="@color/colorAccent"
-        app:itemTextColor="@color/colorAccent"
-        app:menu="@menu/activity_main_drawer" />
+        app:menu="@menu/activity_main_drawer"
+        app:itemHorizontalPadding="24dp"
+        app:itemIconTint="@color/drawer_item"
+        app:itemTextColor="@color/drawer_item"
+        app:itemBackground="@android:color/transparent" />
+
+    <!--style="@style/Widget.Design.NavigationView" android:layout_marginTop="@dimen/margin_top_navigation" app:itemIconTint="@color/colorAccent" app:itemTextColor="@color/colorAccent" -->
 
 </androidx.drawerlayout.widget.DrawerLayout>
